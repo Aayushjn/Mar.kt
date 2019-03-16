@@ -1,0 +1,31 @@
+Should Ideally be in the wiki, but this is easier for now
+
+Apps and Functionality
+
+1. homepage app
+    Needs to handle loading of homepage, Registration and Sign in functionality 
+    Should Redirect to buy/sell portal ie the main dashboard
+
+    Pages/Views:
+    - homepage
+    - login
+    - registration
+
+2. buyer app
+    Handles all buyer functionality 
+
+    Pages/Views:
+    - buyer dashboard - this is the default dashboard view 
+    - 
+
+3. seller app
+    Handles all seller functionality 
+
+4. mailbox app
+    Handles all mailbox related information and functions. 
+
+
+## Models need to be placed within the models.py files of the app where they are accessed most.
+
+## Passing of minimal data between apps should be practiced. 
+
