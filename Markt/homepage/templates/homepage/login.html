@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <title> {{page_name}} | Mar.kt </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{% static 'homepage/img/favicon.png' %}" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Voltaire" rel="stylesheet">
+
+  <!-- Theme css -->
+  <link href="{% static 'homepage/css/theme.css' %}" rel="stylesheet">
+
+  <!-- Custom css -->
+  <link href="{% static 'homepage/css/index.css' %}" rel="stylesheet">
+  <link href="{% static 'homepage/css/login.css' %}" rel="stylesheet">
+
+
+  <!-- Bootstrap css -->
+  <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+  <link href="{% static 'homepage/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'homepage/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'homepage/lib/owlcarousel/assets/owl.theme.default.min.css' %}" rel="stylesheet">
+  <link href="{% static 'homepage/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'homepage/lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'homepage/lib/modal-video/css/modal-video.min.css' %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'homepage/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+  <header id="header" class="header header-hide">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <a href="#body"><img class="logo-image" id="homepage-logo" src="{% static 'homepage/img/logo3.png' %}" alt="" title="homelogo" /></a>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          
+          <li class="menu-active"><a href="#hero">Home</a></li>
+          
+          <li><a href="#about-us">About</a></li>
+          
+          <li><a href="#team">Team</a></li>
+          
+          <li><a href="#contact">Contact</a></li>
+          <li class="menu-has-children"><a href="">Start Here!</a>
+            <ul>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Register</a></li>
+            </ul>
+          </li>
+          
+          
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Hero Section
+  ============================-->
+  <section id="hero" class="wow fadeIn">
+    <div class="hero-container">
+        
+        <section class="sign-in">
+            <div class="container" id="login-box">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="{% static 'homepage/img/signin-image.jpg' %}" alt="sing up image"></figure>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Login</h2>
+                        <form method="POST" class="register-form" id="login-form">
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/><br>
+                                <a href="#" class="signup-image-link">Create an account</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+      
+    </div>
+  </section><!-- #hero -->
+
+  <footer class="footer">
+    <div class="container" id="footer-container">
+      <div class="row">
+
+        <div class="col-md-12 col-lg-4">
+          <div class="footer-logo">
+
+            <a class="navbar-brand" href="#"><img src="{% static 'homepage/img/logo3.png' %}" class="logo-image" id="footer-logo"></a>
+            <p>A college sales portal<br>By students; For students</p>
+
+          </div>
+        </div>
+
+
+
+        <div class="col-sm-6 col-md-3 col-lg-2">
+          <div class="list-menu">
+
+            <h4>Support</h4>
+
+            <ul class="list-unstyled">
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyrights">
+      <div class="container">
+        <p>&copy; Copyrights Mark.kt. All rights reserved.</p>
+      </div>
+    </div>
+
+  </footer>
+
+
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!--Custom JS and JQuery-->
+  <script src="{% static 'homepage/jquery/jquery.min.js' %} "></script>
+  <script src="{% static 'homepage/js/login.js' %}"></script>
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'homepage/lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'homepage/lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'homepage/lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'homepage/lib/superfish/hoverIntent.js' %}"></script>
+  <script src="{% static 'homepage/lib/superfish/superfish.min.js' %}"></script>
+  <script src="{% static 'homepage/lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'homepage/lib/modal-video/js/modal-video.js' %}"></script>
+  <script src="{% static 'homepage/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'homepage/lib/wow/wow.min.js' %}"></script>
+ 
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'homepage/js/main.js' %}"></script>
+
+</body>
+</html>

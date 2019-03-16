@@ -16,3 +16,16 @@ def display_home(request):
 
     return render(request,'homepage/index.html',context)
 
+def display_login(request):
+    context={
+        'page_name':"Login"
+    }
+
+    return render(request,'homepage/login.html',context)
+
+def display_signup(request):
+    context={
+        'page_name':"Sign Up"
+    }
+
+    return render(request,'homepage/registration.html',context)

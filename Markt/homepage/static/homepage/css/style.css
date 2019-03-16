@@ -190,11 +190,11 @@ span {
   width: 100%;
   height: calc(100vh - 40px);
   background: url(../img/hero-bg.png) center top no-repeat;
-  background-size: 70%;
+  background-size: 90%;
   position: relative;
   bottom:0px;
   margin-top: 40px;
-  opacity: 70%;
+  opacity: 40%;
 }
 
 @media (min-width: 1025px) {
