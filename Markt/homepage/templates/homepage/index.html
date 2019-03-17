@@ -1,502 +1,502 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% load static %}
-  <meta charset="utf-8">
-  <title> {{page_name}} | Mar.kt </title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    {% load static %}
+    <meta charset="utf-8">
+    <title> {{page_name}} | Mar.kt </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-  <!-- Favicons -->
-  <link href="{% static 'homepage/img/favicon.png' %}" rel="icon">
+    <!-- Favicons -->
+    <link href="{% static 'homepage/img/favicon.png' %}" rel="icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Voltaire" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Voltaire" rel="stylesheet">
 
-  <!-- Theme css -->
-  <link href="{% static 'homepage/css/theme.css' %}" rel="stylesheet">
+    <!-- Theme css -->
+    <link href="{% static 'homepage/css/theme.css' %}" rel="stylesheet">
 
-  <!-- Custom css -->
-  <link href="{% static 'homepage/css/index.css' %}" rel="stylesheet">
+    <!-- Custom css -->
+    <link href="{% static 'homepage/css/index.css' %}" rel="stylesheet">
 
-  <!-- Bootstrap css -->
-  <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
-  <link href="{% static 'homepage/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap css -->
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="{% static 'homepage/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-  <!-- Libraries CSS Files -->
-  <link href="{% static 'homepage/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-  <link href="{% static 'homepage/lib/owlcarousel/assets/owl.theme.default.min.css' %}" rel="stylesheet">
-  <link href="{% static 'homepage/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
-  <link href="{% static 'homepage/lib/animate/animate.min.css' %}" rel="stylesheet">
-  <link href="{% static 'homepage/lib/modal-video/css/modal-video.min.css' %}" rel="stylesheet">
+    <!-- Libraries CSS Files -->
+    <link href="{% static 'homepage/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'homepage/lib/owlcarousel/assets/owl.theme.default.min.css' %}" rel="stylesheet">
+    <link href="{% static 'homepage/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'homepage/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'homepage/lib/modal-video/css/modal-video.min.css' %}" rel="stylesheet">
 
-  <!-- Main Stylesheet File -->
-  <link href="{% static 'homepage/css/style.css' %}" rel="stylesheet">
+    <!-- Main Stylesheet File -->
+    <link href="{% static 'homepage/css/style.css' %}" rel="stylesheet">
 </head>
 
 <body>
 
-  <header id="header" class="header header-hide">
+<header id="header" class="header header-hide">
     <div class="container">
 
-      <div id="logo" class="pull-left">
-        <a href="#body"><img class="logo-image" id="homepage-logo" src="{% static 'homepage/img/logo3.png' %}" alt="" title="homelogo" /></a>
-      </div>
+        <div id="logo" class="pull-left">
+            <a href="{% url 'homepage:home' %}"><img class="logo-image" id="homepage-logo" src="{% static 'homepage/img/logo3.png' %}" alt="" title="homelogo" /></a>
+        </div>
 
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          
-          <li class="menu-active"><a href="#hero">Home</a></li>
-          
-          <li><a href="#about-us">About</a></li>
-          
-          <li><a href="#team">Team</a></li>
-          
-          <li><a href="#contact">Contact</a></li>
-          <li class="menu-has-children"><a href="">Start Here!</a>
-            <ul>
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Register</a></li>
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+
+                <li class="menu-active"><a href="#hero">Home</a></li>
+
+                <li><a href="#about-us">About</a></li>
+
+                <li><a href="#team">Team</a></li>
+
+                <li><a href="#contact">Contact</a></li>
+                <li class="menu-has-children"><a href="">Start Here!</a>
+                    <ul>
+                        <li><a href="{% url 'homepage:login' %}">Login</a></li>
+                        <li><a href="{% url 'homepage:signup' %}">Register</a></li>
+                    </ul>
+                </li>
+
+
             </ul>
-          </li>
-          
-          
-        </ul>
-      </nav><!-- #nav-menu-container -->
+        </nav><!-- #nav-menu-container -->
     </div>
-  </header><!-- #header -->
+</header><!-- #header -->
 
-  <!--==========================
-    Hero Section
-  ============================-->
-  <section id="hero" class="wow fadeIn">
+<!--==========================
+  Hero Section
+============================-->
+<section id="hero" class="wow fadeIn">
     <div class="hero-container">
-      <img src="{% static 'homepage/img/logo3.png' %} " class="logo-image" id="hero-image">
-      <h1>A campus sales portal</h1>
-      <h2>By Students ; For Students</h2>
+        <img src="{% static 'homepage/img/logo3.png' %} " class="logo-image" id="hero-image">
+        <h1>A campus sales portal</h1>
+        <h2>By Students ; For Students</h2>
 
-      <!-- This needs to be edited -->
-      <img src="{% static 'homepage/img/hero-img.jpg' %}" alt="Hero Imgs" id="homepage-hero">
-      <a href="#get-started" class="btn-get-started scrollto">Get Started</a>
-      
+        <!-- This needs to be edited -->
+        <img src="{% static 'homepage/img/hero-img.jpg' %}" alt="Hero Imgs" id="homepage-hero">
+        <a href="{% url 'homepage:signup' %}" class="btn-get-started scrollto">Get Started</a>
+
     </div>
-  </section><!-- #hero -->
+</section><!-- #hero -->
 
-  <!--==========================
-    Get Started Section
-  ============================-->
-  <section id="get-started" class="padd-section text-center wow fadeInUp">
+<!--==========================
+  Get Started Section
+============================-->
+<section id="get-started" class="padd-section text-center wow fadeInUp">
 
     <div class="container">
-      <div class="section-title text-center">
+        <div class="section-title text-center">
 
-        <h2>The best deals on campus, at your fingertips!</h2>
-        <p class="separator">Done with that drafter after just one semester of use? Seeking notes for that class you "forgot" to take them for yourself? Mar.kt connects you with seniors, juniors and classmates alike and brings you a college shopping experience like no other.</p>
+            <h2>The best deals on campus, at your fingertips!</h2>
+            <p class="separator">Done with that drafter after just one semester of use? Seeking notes for that class you "forgot" to take them for yourself? Mar.kt connects you with seniors, juniors and classmates alike and brings you a college shopping experience like no other.</p>
 
-      </div>
+        </div>
     </div>
 
     <div class="container">
-      <div class="row">
+        <div class="row">
 
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-block">
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-block">
 
-            <img src="{% static 'homepage/img/bluedot.png' %}" alt="img" class="img-fluid">
-            <h4>Find products relevant to you</h4>
-            <p>Every college is different, and we at Mar.kt recognize that. Find the best second hand products listed by your peers, as well as custom items like notes, question papers etc. that you can't find anywhere else.</p>
-            
+                    <img src="{% static 'homepage/img/bluedot.png' %}" alt="img" class="img-fluid">
+                    <h4>Find products relevant to you</h4>
+                    <p>Every college is different, and we at Mar.kt recognize that. Find the best second hand products listed by your peers, as well as custom items like notes, question papers etc. that you can't find anywhere else.</p>
 
-          </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-block">
+
+                    <img src="{% static 'homepage/img/yellowdot.png' %}" alt="img" class="img-fluid">
+                    <h4>Sell directly to your peers</h4>
+                    <p>No more spammy messages or forgotten facebook groups. List your products on Mar.kt and get in touch with your buyers directly!</p>
+
+
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-block">
+
+                    <img src="{% static 'homepage/img/greendot.png' %}" alt="img" class="img-fluid">
+                    <h4>Privacy : Assured.</h4>
+                    <p>Your privacy matters to us too. We don't share your number on your public listing and you get to choose how you want your prospective buyers to contact you.</p>
+
+                </div>
+            </div>
+
         </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-block">
-
-            <img src="{% static 'homepage/img/yellowdot.png' %}" alt="img" class="img-fluid">
-            <h4>Sell directly to your peers</h4>
-            <p>No more spammy messages or forgotten facebook groups. List your products on Mar.kt and get in touch with your buyers directly!</p>
-           
-
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-block">
-
-            <img src="{% static 'homepage/img/greendot.png' %}" alt="img" class="img-fluid">
-            <h4>Privacy : Assured.</h4>
-            <p>Your privacy matters to us too. We don't share your number on your public listing and you get to choose how you want your prospective buyers to contact you.</p>
-  
-          </div>
-        </div>
-
-      </div>
     </div>
 
-  </section>
+</section>
 
-  <!--==========================
-    About Us Section
-  ============================-->
-  <section id="about-us" class="about-us padd-section wow fadeInUp">
+<!--==========================
+  About Us Section
+============================-->
+<section id="about-us" class="about-us padd-section wow fadeInUp">
     <div class="container">
-      <div class="row justify-content-center">
+        <div class="row justify-content-center">
 
-        <div class="col-md-5 col-lg-3">
-          <img src="{% static 'homepage/img/favicon.png' %}" alt="About" id="about-img">
+            <div class="col-md-5 col-lg-3">
+                <img src="{% static 'homepage/img/favicon.png' %}" alt="About" id="about-img">
+            </div>
+
+            <div class="col-md-7 col-lg-5">
+                <div class="about-content">
+
+                    <h2>About Mar.kt</h2>
+                    <p>Started by a group of college students tired of desperately searching for materials and items for their studies and dorm rooms, Mar.kt was born of a need understood perfectly by its founders.
+                    </p>
+
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-angle-right"></i>Seller and Buyer profile integrated</li>
+                        <li><i class="fa fa-angle-right"></i>'.edu' Account signup</li>
+                        <li><i class="fa fa-angle-right"></i>Simple Clean Interface</li>
+                        <li><i class="fa fa-angle-right"></i>Privacy Assured Messaging</li>
+                        <li><i class="fa fa-angle-right"></i>Unique online offline integration: Mar.kt Dorm Sale! </li>
+                    </ul>
+
+                </div>
+            </div>
+
         </div>
-
-        <div class="col-md-7 col-lg-5">
-          <div class="about-content">
-
-            <h2>About Mar.kt</h2>
-            <p>Started by a group of college students tired of desperately searching for materials and items for their studies and dorm rooms, Mar.kt was born of a need understood perfectly by its founders.
-            </p>
-
-            <ul class="list-unstyled">
-              <li><i class="fa fa-angle-right"></i>Seller and Buyer profile integrated</li>
-              <li><i class="fa fa-angle-right"></i>'.edu' Account signup</li>
-              <li><i class="fa fa-angle-right"></i>Simple Clean Interface</li>
-              <li><i class="fa fa-angle-right"></i>Privacy Assured Messaging</li>
-              <li><i class="fa fa-angle-right"></i>Unique online offline integration: Mar.kt Dorm Sale! </li>
-            </ul>
-
-          </div>
-        </div>
-
-      </div>
     </div>
-  </section>
+</section>
 
-  
-  <!--==========================
-    Team Section
-  ============================-->
-  <section id="team" class="padd-section text-center wow fadeInUp">
+
+<!--==========================
+  Team Section
+============================-->
+<section id="team" class="padd-section text-center wow fadeInUp">
 
     <div class="container">
-      <div class="section-title text-center">
+        <div class="section-title text-center">
 
-        <h2>Meet our team!</h2>
-        <p class="separator">Classmates, Friends and Project Partners, meet the three college students behind this innovation</p>
+            <h2>Meet our team!</h2>
+            <p class="separator">Classmates, Friends and Project Partners, meet the three college students behind this innovation</p>
 
-      </div>
+        </div>
     </div>
 
     <div class="container" >
-      <div class="row" id="team-container">
+        <div class="row" id="team-container">
 
-        <div class="col-md-6 col-md-4 col-lg-3">
-          <div class="team-block bottom">
-            <img src="{% static 'homepage/img/team/aditi.jpeg' %}" class="img-responsive" alt="img">
-            <div class="team-content">
-              <ul class="list-unstyled">
-                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>Design, Front-End Development and Content</span>
-              <h4>Aditi Rao</h4>
+            <div class="col-md-6 col-md-4 col-lg-3">
+                <div class="team-block bottom">
+                    <img src="{% static 'homepage/img/team/aditi.jpeg' %}" class="img-responsive" alt="img">
+                    <div class="team-content">
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="fa fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                        <span>Design, Front-End Development and Content</span>
+                        <h4>Aditi Rao</h4>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-       <div class="col-md-6 col-md-4 col-lg-3">
-          <div class="team-block bottom">
-            <img src="{% static 'homepage/img/team/aayush.jpeg' %}" class="img-responsive" alt="img">
-            <div class="team-content">
-              <ul class="list-unstyled">
-                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>Backend, Systems and Integration</span>
-              <h4>Aayush Jain</h4>
+            <div class="col-md-6 col-md-4 col-lg-3">
+                <div class="team-block bottom">
+                    <img src="{% static 'homepage/img/team/aayush.jpeg' %}" class="img-responsive" alt="img">
+                    <div class="team-content">
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="fa fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                        <span>Backend, Systems and Integration</span>
+                        <h4>Aayush Jain</h4>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-md-6 col-md-4 col-lg-3">
-          <div class="team-block bottom">
-            <img src="{% static 'homepage/img/team/spandana.jpg' %}" class="img-responsive" alt="img">
-            <div class="team-content">
-              <ul class="list-unstyled">
-                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>Business Logic, Workflow and Testing</span>
-              <h4>Spandana Balumuri</h4>
+            <div class="col-md-6 col-md-4 col-lg-3">
+                <div class="team-block bottom">
+                    <img src="{% static 'homepage/img/team/spandana.jpg' %}" class="img-responsive" alt="img">
+                    <div class="team-content">
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="fa fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                        <span>Business Logic, Workflow and Testing</span>
+                        <h4>Spandana Balumuri</h4>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-      </div>
+        </div>
     </div>
-  </section>
+</section>
 
 
-  <!--==========================
-    Testimonials Section
-  ============================-->
+<!--==========================
+  Testimonials Section
+============================-->
 
-  <section id="testimonials" class="padd-section text-center wow fadeInUp">
+<section id="testimonials" class="padd-section text-center wow fadeInUp">
     <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-md-8">
+
+                <div class="testimonials-content">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+                        <div class="carousel-inner" role="listbox">
+
+                            <div class="carousel-item  active">
+                                <div class="top-top">
+
+                                    <h2>Finally have the notes I need!</h2>
+                                    <p>I don't know how I would have managed without this!</p>
+                                    <h4>Student et. al <span>NITK</span></h4>
+
+                                </div>
+                            </div>
+
+                            <div class="carousel-item ">
+                                <div class="top-top">
+
+                                    <h2>Found the perfect furniture for my new room!</h2>
+                                    <p>Finally my hostel looks more liveable</p>
+                                    <h4>GH 2 Resident<span>NITK</span></h4>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="btm-btm">
+
+                            <ul class="list-unstyled carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!--==========================
+  Newsletter Section
+============================-->
+<!-- <section id="newsletter" class="newsletter text-center wow fadeInUp">
+  <div class="overlay padd-section">
+    <div class="container">
+
       <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-6">
+          <form class="form-inline" method="POST" action="#">
 
-        <div class="col-md-8">
+            <input type="email" class="form-control " placeholder="Email Adress" name="email">
+            <button type="submit" class="btn btn-default"><i class="fa fa-location-arrow"></i>Subscribe</button>
 
-          <div class="testimonials-content">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          </form>
 
-              <div class="carousel-inner" role="listbox">
+        </div>
+      </div>
 
-                <div class="carousel-item  active">
-                  <div class="top-top">
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
 
-                    <h2>Finally have the notes I need!</h2>
-                    <p>I don't know how I would have managed without this!</p>
-                    <h4>Student et. al <span>NITK</span></h4>
 
-                  </div>
+    </div>
+  </div>
+</section> -->
+
+<!--==========================
+  Contact Section
+============================-->
+<section id="contact" class="padd-section wow fadeInUp">
+
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>Contact us</h2>
+            <p class="separator">Have a burning question? Or valuable feedback? Reach us here! </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-3 col-md-4">
+
+                <div class="info">
+                    <div>
+                        <i class="fa fa-map-marker"></i>
+                        <p>NITK<br>Surathkal,575025</p>
+                    </div>
+
+                    <div class="email">
+                        <i class="fa fa-envelope"></i>
+                        <p>markt@nitk.ac.in</p>
+                    </div>
+
+                    <div>
+                        <i class="fa fa-phone"></i>
+                        <p>1234567890</p>
+                    </div>
                 </div>
 
-                <div class="carousel-item ">
-                  <div class="top-top">
-
-                    <h2>Found the perfect furniture for my new room!</h2>
-                    <p>Finally my hostel looks more liveable</p>
-                    <h4>GH 2 Resident<span>NITK</span></h4>
-
-                  </div>
+                <div class="social-links">
+                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
                 </div>
 
+            </div>
 
-              </div>
+            <div class="col-lg-5 col-md-8">
+                <div class="form">
+                    <div id="sendmessage">Your message has been sent. Thank you!</div>
+                    <div id="errormessage"></div>
+                    <form action="" method="post" role="form" class="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="text-center"><button type="submit">Send Message</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- #contact -->
 
-              <div class="btm-btm">
+<!--==========================
+  Footer
+============================-->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
 
-                <ul class="list-unstyled carousel-indicators">
-                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <div class="col-md-12 col-lg-4">
+                <div class="footer-logo">
+
+                    <a class="navbar-brand" href="#"><img src="{% static 'homepage/img/logo3.png' %}" class="logo-image" id="footer-logo"></a>
+                    <p>A college sales portal<br>By students; For students</p>
+
+                </div>
+            </div>
+
+            <!-- <div class="col-sm-6 col-md-3 col-lg-2">
+              <div class="list-menu">
+
+                <h4>Abou Us</h4>
+
+                <ul class="list-unstyled">
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">Features item</a></li>
+                  <li><a href="#">Live streaming</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
                 </ul>
 
               </div>
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
- 
-  <!--==========================
-    Newsletter Section
-  ============================-->
-  <!-- <section id="newsletter" class="newsletter text-center wow fadeInUp">
-    <div class="overlay padd-section">
-      <div class="container">
-
-        <div class="row justify-content-center">
-          <div class="col-md-9 col-lg-6">
-            <form class="form-inline" method="POST" action="#">
-
-              <input type="email" class="form-control " placeholder="Email Adress" name="email">
-              <button type="submit" class="btn btn-default"><i class="fa fa-location-arrow"></i>Subscribe</button>
-
-            </form>
-
-          </div>
-        </div>
-
-          <ul class="list-unstyled">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-          </ul>
-
-
-      </div>
-    </div>
-  </section> -->
-
-  <!--==========================
-    Contact Section
-  ============================-->
-  <section id="contact" class="padd-section wow fadeInUp">
-
-    <div class="container">
-      <div class="section-title text-center">
-        <h2>Contact us</h2>
-        <p class="separator">Have a burning question? Or valuable feedback? Reach us here! </p>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row justify-content-center">
-
-        <div class="col-lg-3 col-md-4">
-
-          <div class="info">
-            <div>
-              <i class="fa fa-map-marker"></i>
-              <p>NITK<br>Surathkal,575025</p>
             </div>
 
-            <div class="email">
-              <i class="fa fa-envelope"></i>
-              <p>markt@nitk.ac.in</p>
+            <div class="col-sm-6 col-md-3 col-lg-2">
+              <div class="list-menu">
+
+                <h4>Abou Us</h4>
+
+                <ul class="list-unstyled">
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">Features item</a></li>
+                  <li><a href="#">Live streaming</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                </ul>
+
+              </div>
+            </div> -->
+
+            <div class="col-sm-6 col-md-3 col-lg-2">
+                <div class="list-menu">
+
+                    <h4>Support</h4>
+
+                    <ul class="list-unstyled">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+
+                </div>
             </div>
 
-            <div>
-              <i class="fa fa-phone"></i>
-              <p>1234567890</p>
-            </div>
-          </div>
+            <!-- <div class="col-sm-6 col-md-3 col-lg-2">
+              <div class="list-menu">
 
-          <div class="social-links">
-            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-          </div>
+                <h4>Abou Us</h4>
+
+                <ul class="list-unstyled">
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">Features item</a></li>
+                  <li><a href="#">Live streaming</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                </ul>
+
+              </div>
+            </div>-->
 
         </div>
-
-        <div class="col-lg-5 col-md-8">
-          <div class="form">
-            <div id="sendmessage">Your message has been sent. Thank you!</div>
-            <div id="errormessage"></div>
-            <form action="" method="post" role="form" class="contactForm">
-              <div class="form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                <div class="validation"></div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
-  </section><!-- #contact -->
-
-  <!--==========================
-    Footer
-  ============================-->
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-12 col-lg-4">
-          <div class="footer-logo">
-
-            <a class="navbar-brand" href="#"><img src="{% static 'homepage/img/logo3.png' %}" class="logo-image" id="footer-logo"></a>
-            <p>A college sales portal<br>By students; For students</p>
-
-          </div>
-        </div>
-
-        <!-- <div class="col-sm-6 col-md-3 col-lg-2">
-          <div class="list-menu">
-
-            <h4>Abou Us</h4>
-
-            <ul class="list-unstyled">
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Features item</a></li>
-              <li><a href="#">Live streaming</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 col-lg-2">
-          <div class="list-menu">
-
-            <h4>Abou Us</h4>
-
-            <ul class="list-unstyled">
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Features item</a></li>
-              <li><a href="#">Live streaming</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-
-          </div>
-        </div> -->
-
-        <div class="col-sm-6 col-md-3 col-lg-2">
-          <div class="list-menu">
-
-            <h4>Support</h4>
-
-            <ul class="list-unstyled">
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Contact us</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-
-          </div>
-        </div>
-
-        <!-- <div class="col-sm-6 col-md-3 col-lg-2">
-          <div class="list-menu">
-
-            <h4>Abou Us</h4>
-
-            <ul class="list-unstyled">
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Features item</a></li>
-              <li><a href="#">Live streaming</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-
-          </div>
-        </div>-->
-
-      </div>
-    </div> 
 
     <div class="copyrights">
-      <div class="container">
-        <p>&copy; Copyrights Mark.kt. All rights reserved.</p>
-      </div>
+        <div class="container">
+            <p>&copy; Copyrights Mark.kt. All rights reserved.</p>
+        </div>
     </div>
 
-  </footer>
+</footer>
 
 
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-  <!-- JavaScript Libraries -->
-  <script src="{% static 'homepage/lib/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'homepage/lib/jquery/jquery-migrate.min.js' %}"></script>
-  <script src="{% static 'homepage/lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'homepage/lib/superfish/hoverIntent.js' %}"></script>
-  <script src="{% static 'homepage/lib/superfish/superfish.min.js' %}"></script>
-  <script src="{% static 'homepage/lib/easing/easing.min.js' %}"></script>
-  <script src="{% static 'homepage/lib/modal-video/js/modal-video.js' %}"></script>
-  <script src="{% static 'homepage/lib/owlcarousel/owl.carousel.min.js' %}"></script>
-  <script src="{% static 'homepage/lib/wow/wow.min.js' %}"></script>
- 
-  <!-- Template Main Javascript File -->
-  <script src="{% static 'homepage/js/main.js' %}"></script>
+<!-- JavaScript Libraries -->
+<script src="{% static 'homepage/lib/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'homepage/lib/jquery/jquery-migrate.min.js' %}"></script>
+<script src="{% static 'homepage/lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'homepage/lib/superfish/hoverIntent.js' %}"></script>
+<script src="{% static 'homepage/lib/superfish/superfish.min.js' %}"></script>
+<script src="{% static 'homepage/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'homepage/lib/modal-video/js/modal-video.js' %}"></script>
+<script src="{% static 'homepage/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'homepage/lib/wow/wow.min.js' %}"></script>
+
+<!-- Template Main Javascript File -->
+<script src="{% static 'homepage/js/main.js' %}"></script>
 
 </body>
 </html>
