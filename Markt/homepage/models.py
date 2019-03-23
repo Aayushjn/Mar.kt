@@ -2,7 +2,7 @@ from django.db import models
 
 
 class User(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField()
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     email_id = models.EmailField(primary_key=True)

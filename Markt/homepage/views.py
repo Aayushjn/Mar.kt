@@ -30,3 +30,10 @@ def display_signup(request):
     }
 
     return render(request, 'homepage/registration.html', context)
+
+def display_dash_home(request):
+    context = {
+        'page_name': "Dashboard"
+    }
+
+    return render(request, 'homepage/dashboard.html', context)
