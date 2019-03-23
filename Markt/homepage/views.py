@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from urllib import request
-
+from .models import User
 
 def display_home(request):
     # use request.session to pass anything you need between views
-    # delete sessions on pages that aren't dashboard pages to force logout  
+    # delete sessions on pages that aren't dashboard pages to force logout
 
     # request.session.delete()
 
@@ -17,19 +17,62 @@ def display_home(request):
 
 
 def display_login(request):
-    context = {
-        'page_name': "Login"
-    }
 
-    return render(request, 'homepage/login.html', context)
+    # TODO : errormessage display in login.html
+
+    if request.method == 'POST':
+            name = request.POST.get('your_name')
+            password = request.POST.get('your_pass')
+
+            try:
+                user=User.objects.get(name = name)
+            except:
+                context['errormessage']="This user is not registered"
+                return render(request, 'homepage/login.html', context)
+
+            if password!=user.password:
+                context['errormessage']="Password doesn't match"
+                return render(request, 'homepage/login.html', context)
+
+            return render(request, 'homepage/sample.html', {'name': name})
+
+    else:
+        context = {
+            'page_name': "Login",
+        }
+        return render(request, 'homepage/login.html', context)
 
 
 def display_signup(request):
-    context = {
-        'page_name': "Sign Up"
-    }
 
-    return render(request, 'homepage/registration.html', context)
+    # TODO : errormessage display in registration.html
+
+    if request.method == 'POST':
+            name = request.POST.get('name')
+            email_id = request.POST.get('email')
+            password = request.POST.get('pass')
+            re_password = request.POST.get('re_pass')
+
+            if password != re_password:
+                context['errormessage']="Password doesn't match"
+                return render(request, 'homepage/registration.html', context)
+
+            try:
+                user=User.objects.get(email_id = email_id)
+                context['errormessage']="Email ID exists"
+                return render(request, 'homepage/registration.html', context)
+            except:
+                user = User()
+                user.name = name
+                user.email_id = email_id
+                user.password = password
+                return render(request, 'homepage/sample.html', {'email_id':email_id})
+
+    else:
+        context = {
+            'page_name': "Sign Up",
+        }
+        return render(request, 'homepage/registration.html', context)
 
 def display_dash_home(request):
     context = {
