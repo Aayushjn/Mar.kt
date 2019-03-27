@@ -1,5 +1,4 @@
 
 .product_img{
-    height:300px;
-    width:300px;
+    width:inherit;
 }
