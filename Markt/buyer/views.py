@@ -18,3 +18,17 @@ def display_buyer_cat(request):
     }
 
     return render(request, 'buyer/buyer-category.html', context)
+
+def display_buyer_item(request):
+    context = {
+        'page_name': "Item Display",
+        'category': "Generic Category",
+        'item': "Generic Item",
+        'base_bid':100,
+        'high':300,
+        'description':"",
+        'seller':"Generic Seller",
+
+    }
+
+    return render(request, 'buyer/buyer-item.html', context)

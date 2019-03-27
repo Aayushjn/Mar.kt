@@ -8,4 +8,5 @@ app_name = 'buyer'
 urlpatterns = [
     path('dashboard/', views.display_buyer_dash, name="dashboard"),
     path('dashboard/category', views.display_buyer_cat, name="category"),
+    path('dashboard/item', views.display_buyer_item, name="item"),
 ]
