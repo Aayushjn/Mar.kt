@@ -9,7 +9,7 @@
   <link href="{% static 'homepage/img/favicon.png' %}" rel="icon"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
   <title>
-    {{ item }} | Mar.kt
+    {{page_name}} | Mar.kt
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
@@ -26,7 +26,7 @@
 
    <!-- Custom css -->
    <link href="{% static 'homepage/css/dash.css' %}" rel="stylesheet">
-   <link href="{% static 'buyer/css/buyer-item.css' %}" rel="stylesheet">
+   <link href="{% static 'buyer/css/buyer-dashboard.css' %}" rel="stylesheet">
 
   
 </head>
@@ -51,7 +51,7 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active" id="dbhome">
+          <li  id="dbhome">
             <a href="{% url 'homepage:dash_home' %}">
               <i class="nc-icon nc-laptop"></i>
               <p>Dashboard Home</p>
@@ -63,7 +63,7 @@
               <p>Mailbox</p>
             </a>
           </li>
-          <li id="seller">
+          <li class="active" id="seller">
             <a href="#">
               <i class="nc-icon nc-money-coins"></i>
               <p>Seller Dashboard</p>
@@ -91,9 +91,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <div class="navbar-brand">
-            <a href="{% url 'buyer:dashboard' %}"> Buyer Dashboard </a> <a href="{% url 'buyer:category' %}"> | {{ category}}</a> <a href=""> | {{ item }}</a>
-          </div>
+            <a class="navbar-brand" href="#pablo"> Seller Dashboard</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -158,64 +156,146 @@
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
-                    <img class="product_img" src="{% static 'homepage/img/bluedot.png' %}">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-              <div class="card card-stats">
-                <div class="card-body ">
-                  <div class="row">
-                    <div class="col-1"></div>
-                    <div class="col-8">
-                      <div class="text-left">
-                        <p class="title_custom">Generic Item</p>
-                      
-                        <p class="category_custom">{{ category }}</p>
-                        <p class="category_custom">Sold by {{ seller }}</p>
-                        <br>
-                        <p class="description_custom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id egestas odio, eget luctus turpis. Sed faucibus nibh a nibh tempor congue ac sed diam. Nam vitae tincidunt diam.
-                          </p>
-                        <hr>
-                        <p class="title_custom">Base Bid : {{ base_bid }} | Highest : {{ high }}</p>
-                        
-                      </div>
-                      <div class="col-2"></div>
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-left icon-warning">
+                      <i class="nc-icon nc-paper"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Listings</p>
+                      <p class="card-title">My Products
+                        <p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-              <div class="card card-stats">
-                <div class="card-body ">
-                  <div class="row">
-                      <div class="text-left">
-                        <div class="col-2"> </div>
-                        <div class="col-8">
-                          <div class="text-left">
-                            <p class="title_custom">Bid on this item:</p>
-                          
-                            <p class="description_custom">Enter your bid amount below
-                            <input type="number" placeholder= "{{ high }}" > &nbsp; <button id="bid_button"name="Bid">Place Bid</button>
-                          </p>
-                            <hr>
-                            <p class="title_custom"></p>
-                            
-                          </div>
-                        <div class="col-2"></div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-left icon-warning">
+                      <i class="nc-icon nc-simple-add"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category"> New Listing</p>
+                      <p class="card-title">Add Product
+                        <p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            
-              
           </div>
-
+          <div class="col-sm-4">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-left icon-warning">
+                      <i class="nc-icon nc-money-coins"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Financials</p>
+                      <p class="card-title">My Earnings
+                        <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card ">
+              <div class="card-header ">
+                <h5 class="card-title">Your Hottest Listings</h5>
+                <p class="card-category">Find out which of your products buyers love</p>
+              </div>
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-sm-4">
+                      <div class="card card-stats">
+                        <div class="card-body">
+                          <div class="row text-center">
+                            <div class="col-4">
+                                <img class="product_img" src="{% static 'homepage/img/bluedot.png' %}">
+                            </div>
+                            <div class="col-8">
+                              <div class="numbers">
+                                <p class="card-category">{{ category }}</p>
+                                <p class="card-title">Generic Item
+                                  <p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer text-center">
+                          <hr>
+                          Base Bid : {{ base_bid }} | Highest : {{ high }}
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="card card-stats">
+                        <div class="card-body">
+                          <div class="row text-center">
+                            <div class="col-4">
+                                <img class="product_img" src="{% static 'homepage/img/bluedot.png' %}">
+                            </div>
+                            <div class="col-8">
+                              <div class="numbers">
+                                <p class="card-category">{{ category }}</p>
+                                <p class="card-title">Generic Item
+                                  <p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer text-center">
+                          <hr>
+                          Base Bid : {{ base_bid }} | Highest : {{ high }}
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="card card-stats">
+                        <div class="card-body">
+                          <div class="row text-center">
+                            <div class="col-4">
+                                <img class="product_img" src="{% static 'homepage/img/bluedot.png' %}">
+                            </div>
+                            <div class="col-8">
+                              <div class="numbers">
+                                <p class="card-category">{{ category }}</p>
+                                <p class="card-title">Generic Item
+                                  <p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer text-center">
+                          <hr>
+                          Base Bid : {{ base_bid }} | Highest : {{ high }}
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
