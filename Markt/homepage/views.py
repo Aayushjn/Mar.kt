@@ -80,3 +80,10 @@ def display_dash_home(request):
     }
 
     return render(request, 'homepage/dashboard.html', context)
+
+def display_mail_home(request):
+    context = {
+        'page_name': "Mailbox"
+    }
+
+    return render(request, 'homepage/mailbox.html', context)
