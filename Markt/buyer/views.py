@@ -8,3 +8,11 @@ def display_buyer_dash(request):
     }
 
     return render(request, 'buyer/buyer-dashboard.html', context)
+
+def display_buyer_cat(request):
+    context = {
+        'page_name': "Buyer Dashboard",
+        'category': "Generic Category",
+    }
+
+    return render(request, 'buyer/buyer-category.html', context)
