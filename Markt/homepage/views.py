@@ -87,3 +87,14 @@ def display_mail_home(request):
     }
 
     return render(request, 'homepage/mailbox.html', context)
+
+def display_mail(request):
+    context = {
+        'page_name': "Mail View",
+        'mail_title':"Send Notes Pls",
+        'mail_sender':"Spandu",
+        'mail_text':"Yo bro send notes",
+        'mail_sent':"Now",
+    }
+
+    return render(request, 'homepage/mail-view.html', context)

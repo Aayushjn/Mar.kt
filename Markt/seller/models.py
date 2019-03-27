@@ -1,6 +1,6 @@
 from django.db import models
 
-from Markt.homepage.models import User
+from homepage.models import User
 
 
 class Bid(models.Model):

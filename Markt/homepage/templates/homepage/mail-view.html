@@ -151,70 +151,23 @@
 </div> -->
 <div class="content">
   <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          <h4 class="card-title">Inbox 
-              <div class="text-md-right">
-              <i class="nc-icon nc-refresh-69 text-right"></i>
+      <div class="col-md-12">
+          <div class="card ">
+            <div class="card-header ">
+              <h5 class="card-title">{{ mail_title }}</h5>
+              <p class="card-category"> {{ mail_sender }}</p>
             </div>
-          </h4>
-          
-              
-          
-        </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table">
-              <thead class=" text-primary">
-                <th>
-                  Sender
-                </th>
-                <th>
-                  Listing
-                </th>
-                <th>
-                  Message
-                </th>
-                <th >
-                  Opened
-                </th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    Aayush
-                  </td>
-                  <td>
-                    Notes - SE
-                  </td>
-                  <td>
-                    Hi can I have notes
-                  </td>
-                  <td >
-                    New!
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Spandana
-                  </td>
-                  <td>
-                    Notes - SE
-                  </td>
-                  <td>
-                    Hi take my notes
-                  </td>
-                  <td >
-                    New!
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="card-body ">
+              <p> {{ mail_text }} </p>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-history"></i> {{ mail_sent }}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+          </div>
     </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
