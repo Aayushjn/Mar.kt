@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 from . import views
 
 
@@ -7,8 +8,8 @@ app_name = 'seller'
 
 urlpatterns = [
     path('dashboard/', views.display_seller_dash, name="dashboard"),
-    path('dashboard/listings', views.display_seller_list, name="listings"),
-    path('dashboard/item', views.display_seller_item, name="item"),
+    url(r'^dashboard/listings/(?P<category_id>\d+)/$', views.display_seller_list, name="listings"),
+    url(r'^dashboard/item/(?P<item_id>\d+)/$', views.display_seller_item, name="item"),
     path('dashboard/mod', views.display_seller_mod, name="mod"),
    
 ]

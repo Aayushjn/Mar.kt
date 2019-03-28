@@ -9,31 +9,34 @@ def display_seller_dash(request):
         'item': "Generic Item",
         'base_bid': 100,
         'high': 300,
+        'cat_id':9,
 
     }
 
     return render(request, 'seller/seller-dashboard.html', context)
 
-def display_seller_list(request):
+def display_seller_list(request,category_id):
     context = {
         'page_name': "Seller Listings",
         'category': "Generic Category",
         'base_bid': 100,
         'high': 300,
-
+        'id':0,
     }
 
     return render(request, 'seller/seller-listings.html', context)
 
-def display_seller_item(request):
+def display_seller_item(request,item_id):
     context = {
         'page_name': "Item Display",
         'category': "Generic Category",
+        'cat':9,
         'item': "Generic Item",
         'base_bid': 100,
         'high': 300,
         'description': "",
         'seller': "Generic Seller",
+        'id':id,
 
     }
 
