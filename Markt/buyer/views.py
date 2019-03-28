@@ -17,12 +17,13 @@ def display_buyer_cat(request):
         'category': "Generic Category",
         'base_bid': 100,
         'high': 300,
+        'id':9,
     }
 
     return render(request, 'buyer/buyer-category.html', context)
 
 
-def display_buyer_item(request):
+def display_buyer_item(request,item_id=-1):
     context = {
         'page_name': "Item Display",
         'category': "Generic Category",
@@ -31,6 +32,7 @@ def display_buyer_item(request):
         'high': 300,
         'description': "",
         'seller': "Generic Seller",
+        'id':id,
 
     }
 

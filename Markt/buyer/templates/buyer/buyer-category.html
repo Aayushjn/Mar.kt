@@ -29,6 +29,9 @@
    <link href="{% static 'buyer/css/buyer-category.css' %}" rel="stylesheet">
 
   
+    <script>
+
+    </script>
 </head>
 
 <body class="">
@@ -152,10 +155,13 @@
   
   
 </div> -->
+<form id="buyer-category-form">
+  {% csrf_token %}
       <div class="content">
         <div class="row">
           
-          <div class="col-sm-4">
+          <a href="{% url views.display_buyer_item item_id=id %}">
+          <div class="col-sm-4" >
               <div class="card card-stats">
                 <div class="card-body">
                   <div class="row text-center">
@@ -177,6 +183,8 @@
                 </div>
               </div>
           </div>
+        </a>
+
           <div class="col-sm-4">
               <div class="card card-stats">
                 <div class="card-body">
@@ -333,6 +341,7 @@
           </div>
         </div>
       </div>
+    </form>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
