@@ -21,20 +21,24 @@ def display_login(request):
     # TODO : errormessage display in login.html
 
     if request.method == 'POST':
-        name = request.POST.get('your_name')
-        password = request.POST.get('your_pass')
+        context = {}
+        name = request.POST['your_name']
+        password = request.POST['your_pass']
 
         try:
             user = User.objects.get(name=name)
         except:
-            context['errormessage'] = "This user is not registered"
+            #context['errormessage'] = "This user is not registered"
             return render(request, 'homepage/login.html', context)
 
         if password != user.password:
-            context['errormessage'] = "Password doesn't match"
+            #context['errormessage'] = "Password doesn't match"
             return render(request, 'homepage/login.html', context)
 
-        return render(request, 'homepage/sample.html', {'name': name})
+        request.session['username']=user.name
+        request.session['userid']=user.id
+        return redirect(reverse('homepage:dash_home'))
+        #return render(request, 'homepage/sample.html', context)
 
     else:
         context = {
@@ -45,7 +49,7 @@ def display_login(request):
 
 def display_signup(request):
     # TODO : errormessage display in registration.html
-
+    context = {}
     if request.method == 'POST':
         name = request.POST.get('name')
         email_id = request.POST.get('email')
@@ -65,7 +69,11 @@ def display_signup(request):
             user.name = name
             user.email_id = email_id
             user.password = password
-            return render(request, 'homepage/sample.html', {'email_id': email_id})
+            user.save()
+            request.session['username'] = user.name
+            request.session['userid'] = user.id
+            return redirect(reverse('homepage:dash_home'))
+            #return render(request, 'homepage/sample.html', {'email_id': email})
 
     else:
         context = {
