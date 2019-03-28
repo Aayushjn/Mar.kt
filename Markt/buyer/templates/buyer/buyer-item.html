@@ -92,7 +92,7 @@
               </button>
             </div>
             <div class="navbar-brand">
-            <a href="{% url 'buyer:dashboard' %}"> Buyer Dashboard </a> <a href="{% url 'buyer:category' %}"> | {{ category}}</a> <a href=""> | {{ item }}</a>
+            <a href="{% url 'buyer:dashboard' %}"> Buyer Dashboard </a> <a href="{% url 'buyer:category' cat %}"> | {{ category}}</a> <a href=""> | {{ item }}</a>
           </div>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -175,7 +175,7 @@
                         <p class="category_custom">{{ category }}</p>
                         <p class="category_custom">Sold by {{ seller }}</p>
                         <br>
-                        <p class="description_custom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id egestas odio, eget luctus turpis. Sed faucibus nibh a nibh tempor congue ac sed diam. Nam vitae tincidunt diam.
+                        <p class="description_custom"> {{ id }}Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id egestas odio, eget luctus turpis. Sed faucibus nibh a nibh tempor congue ac sed diam. Nam vitae tincidunt diam.
                           </p>
                         <hr>
                         <p class="title_custom">Base Bid : {{ base_bid }} | Highest : {{ high }}</p>
@@ -216,6 +216,7 @@
               
           </div>
 
+      </div>
       </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
