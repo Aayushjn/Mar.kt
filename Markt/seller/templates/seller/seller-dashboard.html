@@ -63,13 +63,13 @@
               <p>Mailbox</p>
             </a>
           </li>
-          <li id="seller">
+          <li class="active" id="seller">
             <a href="#">
               <i class="nc-icon nc-money-coins"></i>
               <p>Seller Dashboard</p>
             </a>
           </li>
-          <li class="active" id="buyer">
+          <li id="buyer">
             <a href="{% url 'buyer:dashboard' %}">
               <i class="nc-icon nc-bag-16"></i>
               <p>Buyer Dashboard</p>
@@ -91,7 +91,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo"> Buyer Dashboard</a>
+            <a class="navbar-brand" href="#pablo"> Seller Dashboard</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -152,27 +152,7 @@
 </div> -->
       <div class="content">
         <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-left icon-warning">
-                      <i class="nc-icon nc-book-bookmark"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Category</p>
-                      <p class="card-title">Textbooks
-                        <p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="col-sm-4">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -183,8 +163,8 @@
                   </div>
                   <div class="col-7 col-md-8">
                     <div class="numbers">
-                      <p class="card-category">Category</p>
-                      <p class="card-title">QPs
+                      <p class="card-category">Listings</p>
+                      <p class="card-title">My Products
                         <p>
                     </div>
                   </div>
@@ -192,19 +172,19 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="col-sm-4">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-left icon-warning">
-                      <i class="nc-icon nc-ruler-pencil"></i>
+                      <i class="nc-icon nc-simple-add"></i>
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
                     <div class="numbers">
-                      <p class="card-category">Category</p>
-                      <p class="card-title">Notes
+                      <p class="card-category"> New Listing</p>
+                      <p class="card-title">Add Product
                         <p>
                     </div>
                   </div>
@@ -212,19 +192,19 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="col-sm-4">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-left icon-warning">
-                      <i class="nc-icon nc-box"></i>
+                      <i class="nc-icon nc-money-coins"></i>
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
                     <div class="numbers">
-                      <p class="card-category">Category</p>
-                      <p class="card-title">Furniture
+                      <p class="card-category">Financials</p>
+                      <p class="card-title">My Earnings
                         <p>
                     </div>
                   </div>
@@ -237,11 +217,78 @@
           <div class="col-md-12">
             <div class="card ">
               <div class="card-header ">
-                <h5 class="card-title">What's New?</h5>
-                <p class="card-category">Find the best of the season's deals</p>
+                <h5 class="card-title">Your Hottest Listings</h5>
+                <p class="card-category">Find out which of your products buyers love</p>
               </div>
               <div class="card-body ">
-                <img id="advert_img" src="{% static 'buyer/img/advert.jpg' %}" alt="Ad">
+                <div class="row">
+                  <div class="col-sm-4">
+                      <div class="card card-stats">
+                        <div class="card-body">
+                          <div class="row text-center">
+                            <div class="col-4">
+                                <img class="product_img" src="{% static 'homepage/img/bluedot.png' %}">
+                            </div>
+                            <div class="col-8">
+                              <div class="numbers">
+                                <p class="card-category">{{ category }}</p>
+                                <p class="card-title">Generic Item
+                                  <p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer text-center">
+                          <hr>
+                          Base Bid : {{ base_bid }} | Highest : {{ high }}
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="card card-stats">
+                        <div class="card-body">
+                          <div class="row text-center">
+                            <div class="col-4">
+                                <img class="product_img" src="{% static 'homepage/img/bluedot.png' %}">
+                            </div>
+                            <div class="col-8">
+                              <div class="numbers">
+                                <p class="card-category">{{ category }}</p>
+                                <p class="card-title">Generic Item
+                                  <p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer text-center">
+                          <hr>
+                          Base Bid : {{ base_bid }} | Highest : {{ high }}
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="card card-stats">
+                        <div class="card-body">
+                          <div class="row text-center">
+                            <div class="col-4">
+                                <img class="product_img" src="{% static 'homepage/img/bluedot.png' %}">
+                            </div>
+                            <div class="col-8">
+                              <div class="numbers">
+                                <p class="card-category">{{ category }}</p>
+                                <p class="card-title">Generic Item
+                                  <p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer text-center">
+                          <hr>
+                          Base Bid : {{ base_bid }} | Highest : {{ high }}
+                        </div>
+                      </div>
+                  </div>
+                </div>
               </div>
               <div class="card-footer ">
                 <hr>
