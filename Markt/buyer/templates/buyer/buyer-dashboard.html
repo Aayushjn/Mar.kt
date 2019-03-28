@@ -64,7 +64,7 @@
             </a>
           </li>
           <li id="seller">
-            <a href="#">
+            <a href="{% url 'seller:dashboard' %}">
               <i class="nc-icon nc-money-coins"></i>
               <p>Seller Dashboard</p>
             </a>
@@ -154,6 +154,7 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
+              <a href="{% url 'buyer:category' %}">
               <div class="card-body ">
                 <div class="row">
                   <div class="col-5 col-md-4">
@@ -170,8 +171,10 @@
                   </div>
                 </div>
               </div>
+              </a>
             </div>
           </div>
+
           <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
               <div class="card-body ">

@@ -1,3 +1,4 @@
+from django.http import HttpRequest
 from django.shortcuts import render
 
 
@@ -11,13 +12,16 @@ def display_buyer_dash(request):
     return render(request, 'buyer/buyer-dashboard.html', context)
 
 
-def display_buyer_cat(request):
+def display_buyer_cat(request: HttpRequest):
     context = {
         'page_name': "Buyer Dashboard",
         'category': "Generic Category",
         'base_bid': 100,
         'high': 300,
     }
+
+    if request.method == "POST":
+        context['category'] = request.POST.get(['card-title'])
 
     return render(request, 'buyer/buyer-category.html', context)
 
