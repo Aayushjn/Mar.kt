@@ -4,7 +4,6 @@ from homepage.models import User
 
 
 class Product(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     category = models.CharField(max_length=30)
     vendor_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='vendor_id')
