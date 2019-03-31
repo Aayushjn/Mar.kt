@@ -60,6 +60,7 @@ def display_seller_mod(request):
         'high': 300,
         'description': "",
         'seller': "Generic Seller",
+        "cat_id":9,
 
     }
 
