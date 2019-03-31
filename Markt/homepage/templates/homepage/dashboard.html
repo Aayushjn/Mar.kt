@@ -149,179 +149,117 @@
   
   
 </div> -->
-      <div class="content">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-globe text-warning"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Capacity</p>
-                      <p class="card-title">150GB
-                        <p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-refresh"></i> Update Now
-                </div>
-              </div>
-            </div>
+  <div class="content">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card card-user">
+          <div class="image">
+            <img src="{% static 'homepage/img/hero-bg.png' %}" alt="...">
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-money-coins text-success"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Revenue</p>
-                      <p class="card-title">$ 1,345
-                        <p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-calendar-o"></i> Last day
-                </div>
-              </div>
+          <div class="card-body">
+            <div class="author">
+              <a href="#">
+                <img class="avatar border-gray" src="{% static 'homepage/img/team/aditi.jpeg' %}" alt="...">
+                <h5 class="title">Aditi Rao</h5>
+              </a>
+              <p class="description">
+                @aditi_the_alright
+              </p>
             </div>
+            <p class="description text-center">
+              "I don't know what I'm doing"
+            </p>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-vector text-danger"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Errors</p>
-                      <p class="card-title">23
-                        <p>
-                    </div>
-                  </div>
+          <div class="card-footer">
+            <hr>
+            <div class="button-container">
+              <div class="row">
+                <div class="col-lg-3 col-md-6 col-6 ml-auto">
+                  <h5>3
+                    <br>
+                    <small>Year</small>
+                  </h5>
                 </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-clock-o"></i> In the last hour
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-favourite-28 text-primary"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Followers</p>
-                      <p class="card-title">+45K
-                        <p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-refresh"></i> Update now
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">Users Behavior</h5>
-                <p class="card-category">24 Hours performance</p>
-              </div>
-              <div class="card-body ">
-                <canvas id=chartHours width="400" height="100"></canvas>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-history"></i> Updated 3 minutes ago
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">Email Statistics</h5>
-                <p class="card-category">Last Campaign Performance</p>
-              </div>
-              <div class="card-body ">
-                <canvas id="chartEmail"></canvas>
-              </div>
-              <div class="card-footer ">
-                <div class="legend">
-                  <i class="fa fa-circle text-primary"></i> Opened
-                  <i class="fa fa-circle text-warning"></i> Read
-                  <i class="fa fa-circle text-danger"></i> Deleted
-                  <i class="fa fa-circle text-gray"></i> Unopened
-                </div>
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-calendar"></i> Number of emails sent
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-title">NASDAQ: AAPL</h5>
-                <p class="card-category">Line Chart with Points</p>
-              </div>
-              <div class="card-body">
-                <canvas id="speedChart" width="400" height="100"></canvas>
-              </div>
-              <div class="card-footer">
-                <div class="chart-legend">
-                  <i class="fa fa-circle text-info"></i> Tesla Model S
-                  <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                </div>
-                <hr/>
-                <div class="card-stats">
-                  <i class="fa fa-check"></i> Data information certified
+                <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                  <h5>IT
+                    <br>
+                    <small>Department</small>
+                  </h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-md-8">
+        <div class="card card-user">
+          <div class="card-header">
+            <h5 class="card-title">Edit Profile</h5>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-5 pr-1">
+                  <div class="form-group">
+                    <label>Email (disabled)</label>
+                    <input type="text" class="form-control" disabled="" placeholder="someone@nitk.edu.in" value="aditi@nitk.edu.in">
+                  </div>
+                </div>
+                <div class="col-md-3 px-1">
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="Username" value="Aditi Rao">
+                  </div>
+                </div>
+                <div class="col-md-4 pl-1">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Phone Number</label>
+                    <input type="number" class="form-control" placeholder="+91 ----------">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Share Number</label><br>
+                    <label>By clicking this your number will be sent as a contact link for all message responses to a contact request.</label><br>
+                    Share my Number: <input type="checkbox" class="form-control" selected="true">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" value="Aditi">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name" value="Rao">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>About Me</label>
+                    <textarea class="form-control textarea">Here cause I need them $$$$$ </textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="update ml-auto mr-auto">
+                  <button type="submit" class="btn btn-primary btn-round">Update Profile</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
