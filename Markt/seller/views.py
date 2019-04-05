@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from buyer.models import Product
 from homepage.models import User
 from .models import Bid, Mail
+import pdb;
 # Create your views here.
 
 def display_seller_dash(request):
@@ -40,9 +41,8 @@ def display_seller_item(request,item_id):
         'high': 300,
         'description': "",
         'seller': "Generic Seller",
-        # 'id':id,
+        'id':id,
     }
-
     p = Product.objects.get(id=item_id)
     context['category'] = p.category
     context['cat_id'] = p.cat_id
@@ -51,9 +51,12 @@ def display_seller_item(request,item_id):
     context['high'] = p.current_high_bid
     context['description'] = p.description
     context['seller'] = p.vendor_id.name
+    context['id'] = p.id
+
+
     return render(request, 'seller/seller-item.html', context)
 
-def display_seller_mod(request):
+def display_seller_mod(request, item_id):
 
     ##### NOTE ######
     #basically we run a check to see if a product ID is being passed
@@ -72,11 +75,52 @@ def display_seller_mod(request):
         'description': "generic description",
         'seller': "Generic Seller",
         "cat_id":9,
-        "button_text": "Add Product"
-
+        "button_text": "Add Product",
+        "delete_button": True
     }
+
     context['seller'] = request.session['username']
-    if request.method == 'POST':
+
+    # to modify a product
+    if item_id != "-1":
+        p = Product.objects.get(id=item_id)
+        context['category'] = p.category
+        context['item'] = p.name
+        context['base_bid'] = p.minimum_bid
+        context['description'] = p.description
+        context['button_text'] = "Modify Product"
+        if p.category == 'Textbooks':
+            context['cat_id'] = 1
+        elif p.category == 'QPs':
+            context['cat_id'] = 2
+        elif p.category == 'Notes':
+            context['cat_id'] = 3
+        elif p.category == 'Furniture':
+            context['cat_id'] = 4
+
+        if 'delete-listing' in request.POST:
+            p.delete()
+            return redirect(reverse('seller:dashboard'))
+            
+        if request.method == 'POST' and context['button_text'] == 'Modify Product':
+            p.name = request.POST['name']
+            p.category = request.POST['category']
+            p.description = request.POST['description']
+            p.minimum_bid = request.POST['base_bid']
+            if p.category == 'Textbooks':
+                p.cat_id = 1
+            elif p.category == 'QPs':
+                p.cat_id = 2
+            elif p.category == 'Notes':
+                p.cat_id = 3
+            elif p.category == 'Furniture':
+                p.cat_id = 4
+            p.save()
+            return redirect(reverse('seller:dashboard'))
+    else:
+        context['delete_button'] = False
+
+    if request.method == 'POST' and context['button_text'] == 'Add Product':
         context['category'] = request.POST['category']
         user = User.objects.get(id=request.session['userid'])
         product = Product()
@@ -98,4 +142,3 @@ def display_seller_mod(request):
         product.save()
         return redirect(reverse('seller:dashboard'))
     return render(request, 'seller/seller-mod.html', context)
-    

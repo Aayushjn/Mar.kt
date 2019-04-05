@@ -65,15 +65,19 @@ def display_buyer_item(request,item_id):
 
     if request.method == 'POST':
         context['bid_value'] = request.POST['bid_value']
+        try:
+            if p.vendor_id == User.objects.get(id=request.session['userid']):
+                context['errormessage'] = "Sorry! You cannot bid on your product"
         # passing the bid value to create a mail
-        bid = Bid()
-        bid.product_id = p
-        bid.buyer_id = User.objects.get(id=request.session['userid'])
-        bid.price = float(context['bid_value'])
-        bid.save()
-        if p.current_high_bid < bid.price:
-            p.current_high_bid = bid.price
-        p.save()
-        return render(request, 'buyer/sample-mail.html', context)
+        except:
+            bid = Bid()
+            bid.product_id = p
+            bid.buyer_id = User.objects.get(id=request.session['userid'])
+            bid.price = float(context['bid_value'])
+            bid.save()
+            if p.current_high_bid < bid.price:
+                p.current_high_bid = bid.price
+            p.save()
+            return render(request, 'buyer/sample-mail.html', context)
 
     return render(request, 'buyer/buyer-item.html', context)

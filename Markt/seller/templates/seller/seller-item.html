@@ -170,8 +170,7 @@
                     <div class="col-1"></div>
                     <div class="col-8">
                       <div class="text-left">
-                        <p class="title_custom">{{item}}<!--<button name="modify-listing" id="mod-list">Modify Listing</button>--></p>
-
+                        <p class="title_custom">{{item}}</p><a href="{% url 'seller:mod' id%}" name="modify-listing" id="mod-list">Modify Listing</a>
                         <p class="category_custom">{{ category }}</p>
                         <p class="category_custom">Sold by {{ seller }}</p>
                         <br>

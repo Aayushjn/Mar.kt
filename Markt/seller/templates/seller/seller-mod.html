@@ -170,7 +170,7 @@
                         <form method="POST">
                           {% csrf_token%}
                         <!-- <button name="modify-listing" id="mod-list" action="%url ">Modify Listing</button><button name="delete-listing" id="del-list">Delete Listing</button><br> -->
-                        <p class="title_custom">Item Name: <input id="name" name="name" type="text">{{item}}</p>
+                        <p class="title_custom">Item Name: <input id="name" name="name" type="text" value={{item}}></p>
 
                         <p class="category_custom">Item Category: <input id="category" name="category" type="text" value="{{ category }}"></p>
                         <p class="category_custom">Sold by {{ seller }}</p>
@@ -181,7 +181,9 @@
                         <hr>
                         <p class="title_custom">Base Bid : <input id="base_bid" name="base_bid" type="number" value="{{ base_bid }}"></p>
                         <input type="submit" name="modify-listing" id="mod-list" value="{{button_text}}"></input>
+                        {% if delete_button %}
                         <input type="submit" name="delete-listing" id="del-list" value="Delete Listing"></input>
+                        {% endif %}
                         <!-- <button name="delete-listing" id="del-list">Delete Listing</button><br> -->
                         </form>
                       </div>
