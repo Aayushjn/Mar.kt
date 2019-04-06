@@ -16,7 +16,7 @@
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Voltaire" rel="stylesheet">
   <link href="{% static 'homepage/css/font-awesome.min.css' %}" rel="stylesheet">
-  
+
   <!-- CSS Files -->
   <link href="{% static 'homepage/css/bootstrap.min.css' %}" rel="stylesheet" />
   <link href="{% static 'homepage/css/paper-dashboard.css' %}" rel="stylesheet" />
@@ -28,7 +28,7 @@
    <link href="{% static 'homepage/css/dash.css' %}" rel="stylesheet">
    <link href="{% static 'seller/css/seller-item.css' %}" rel="stylesheet">
 
-  
+
 </head>
 
 <body class="">
@@ -75,7 +75,7 @@
               <p>Buyer Dashboard</p>
             </a>
           </li>
-          
+
         </ul>
       </div>
     </div>
@@ -144,10 +144,10 @@
       </nav>
       <!-- End Navbar -->
       <!-- <div class="panel-header panel-header-lg">
-  
+
   <canvas id="bigDashboardChart"></canvas>
-  
-  
+
+
 </div> -->
       <div class="content">
         <div class="row">
@@ -167,18 +167,23 @@
                     <div class="col-2"></div>
                     <div class="col-8">
                       <div class="text-left">
-                        <button name="modify-listing" id="mod-list">Modify Listing</button><button name="delete-listing" id="del-list">Delete Listing</button><br>
-                        <p class="title_custom">Item Name: <input type="text" value="{{ item }}"></p>
-                      
-                        <p class="category_custom">Item Category: <input type="text" value="{{ category }}"></p>
+                        <form method="POST">
+                          {% csrf_token%}
+                        <!-- <button name="modify-listing" id="mod-list" action="%url ">Modify Listing</button><button name="delete-listing" id="del-list">Delete Listing</button><br> -->
+                        <p class="title_custom">Item Name: <input id="name" name="name" type="text">{{item}}</p>
+
+                        <p class="category_custom">Item Category: <input id="category" name="category" type="text" value="{{ category }}"></p>
                         <p class="category_custom">Sold by {{ seller }}</p>
                         <br>
                         <p class="description_custom">Item Description:
                           </p>
-                          <textarea cols="50" rows="4">Lorem Ipsum Dolor Set Amet</textarea>
+                          <textarea cols="50" rows="4" id="description" name="description">{{description}}</textarea>
                         <hr>
-                        <p class="title_custom">Base Bid : <input type="number" value="{{ base_bid }}"></p>
-                        
+                        <p class="title_custom">Base Bid : <input id="base_bid" name="base_bid" type="number" value="{{ base_bid }}"></p>
+                        <input type="submit" name="modify-listing" id="mod-list" value="{{button_text}}"></input>
+                        <input type="submit" name="delete-listing" id="del-list" value="Delete Listing"></input>
+                        <!-- <button name="delete-listing" id="del-list">Delete Listing</button><br> -->
+                        </form>
                       </div>
                       <div class="col-2"></div>
                     </div>
@@ -186,7 +191,7 @@
                 </div>
               </div>
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col-sm-12">
@@ -219,8 +224,8 @@
                 </div>
               </div>
             </div>
-            
-              
+
+
           </div>
 
       </div>
@@ -258,17 +263,17 @@
   <script src="{% static 'homepage/js/popper.min.js' %}"></script>
   <script src="{% static 'homepage/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'homepage/js/perfect-scrollbar.jquery.min.js' %}"></script>
-  
+
   <!-- Chart JS -->
   <script src="{% static 'homepage/js/chartjs.min.js' %}"></script>
-  
+
   <!--  Notifications Plugin    -->
   <script src="{% static 'homepage/js/bootstrap-notify.js' %}"></script>
-  
+
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{% static 'homepage/js/dash.js' %}" type="text/javascript"></script>
-  
- 
+
+
 </body>
 
 </html>

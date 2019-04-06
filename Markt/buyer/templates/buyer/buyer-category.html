@@ -92,7 +92,7 @@
             </button>
           </div>
           <div class="navbar-brand">
-            <a href="{% url 'buyer:dashboard' %}"> Buyer Dashboard </a> <a href=""> | {{ category}}</a>
+            <a href="{% url 'buyer:dashboard' %}"> Buyer Dashboard </a> <a href=""> | {{ category }}</a>
           </div>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -154,18 +154,19 @@
 </div> -->
       <div class="content">
         <div class="row">
+          {% for p in products %}
           <div class="col-sm-4" >
-              <a href="{% url 'buyer:item' id %}">
+              <a href="{% url 'buyer:item' p.id %}">
               <div class="card card-stats">
                 <div class="card-body">
                   <div class="row text-center">
                     <div class="col-4">
-                        <img class="product_img" src="{% static 'seller/img/itemsbluedot.png' %}">
+                        <img class="product_img" src="{% static 'seller/img/items/item.jpeg' %}">
                     </div>
                     <div class="col-8">
                       <div class="numbers">
-                        <p class="card-category">{{ category }}</p>
-                        <p class="card-title">Generic Item</p>
+                        <p class="card-category">{{ p.category }}</p>
+                        <p class="card-title">{{p.name}}</p>
                       </div>
                     </div>
                   </div>
@@ -173,18 +174,19 @@
                 </div>
                 <div class="card-footer text-center">
                     <hr>
-                    Base Bid : {{ base_bid }} | Highest : {{ high }}
+                    Base Bid : {{ p.minimum_bid }} | Highest : {{ p.current_high_bid }}
                   </div>
               </div>
             </a>
           </div>
+          {% endfor %}
           </div>
         </div>
-      <footer class="footer footer-black  footer-white ">
+      <!-- <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
             <nav class="footer-nav">
-              <!-- <ul>
+              <ul>
                 <li>
                   <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
                 </li>
@@ -194,7 +196,7 @@
                 <li>
                   <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
                 </li>
-              </ul> -->
+              </ul>
             </nav>
             <div class="credits ml-auto">
             </div>
@@ -227,7 +229,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
+
     <footer class="footer footer-black  footer-white ">
       <div class="container-fluid">
         <div class="row">

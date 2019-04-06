@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect,reverse
+from django.shortcuts import render, redirect, reverse
 from urllib import request
 from .models import User
 
@@ -28,17 +28,17 @@ def display_login(request):
         try:
             user = User.objects.get(name=name)
         except:
-            #context['errormessage'] = "This user is not registered"
+            # context['errormessage'] = "This user is not registered"
             return render(request, 'homepage/login.html', context)
 
         if password != user.password:
-            #context['errormessage'] = "Password doesn't match"
+            # context['errormessage'] = "Password doesn't match"
             return render(request, 'homepage/login.html', context)
 
-        request.session['username']=user.name
-        request.session['userid']=user.id
+        request.session['username'] = user.name
+        request.session['userid'] = user.id
         return redirect(reverse('homepage:dash_home'))
-        #return render(request, 'homepage/sample.html', context)
+        # return render(request, 'homepage/sample.html', context)
 
     else:
         context = {
@@ -73,7 +73,7 @@ def display_signup(request):
             request.session['username'] = user.name
             request.session['userid'] = user.id
             return redirect(reverse('homepage:dash_home'))
-            #return render(request, 'homepage/sample.html', {'email_id': email})
+            # return render(request, 'homepage/sample.html', {'email_id': email})
 
     else:
         context = {
