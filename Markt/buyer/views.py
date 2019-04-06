@@ -3,6 +3,8 @@ from django.shortcuts import render
 from .models import Product
 from seller.models import Bid, Mail
 from homepage.models import User
+
+
 # Create your views here.
 def display_buyer_dash(request):
     context = {
@@ -12,7 +14,7 @@ def display_buyer_dash(request):
     return render(request, 'buyer/buyer-dashboard.html', context)
 
 
-def display_buyer_cat(request,category_id):
+def display_buyer_cat(request, category_id):
     context = {
         'page_name': "Buyer Dashboard",
         'category': "Generic Category",
@@ -24,7 +26,7 @@ def display_buyer_cat(request,category_id):
 
     if category_id == '1':
         context['category'] = 'Textbooks'
-    elif  category_id == '2':
+    elif category_id == '2':
         context['category'] = 'QPs'
     elif category_id == '3':
         context['category'] = 'Notes'
@@ -40,11 +42,11 @@ def display_buyer_cat(request,category_id):
     return render(request, 'buyer/buyer-category.html', context)
 
 
-def display_buyer_item(request,item_id):
+def display_buyer_item(request, item_id):
     context = {
         'page_name': "Item Display",
         'category': "Generic Category",
-        'cat_id':9,
+        'cat_id': 9,
         'item': "Generic Item",
         'base_bid': 100,
         'high': 300,
