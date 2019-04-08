@@ -3,7 +3,7 @@ A sales portal for students; by students
 
 **All dependencies to be installed are listed below:**
 1. Python 3.x<br>
-`sudo apt-get install python3`
+`sudo apt install python3`
 
 2. Django 2.1.7<br>
 `pip install django` <br> OR <br> `conda install django`

@@ -67,19 +67,9 @@ def display_seller_mod(request):
     # need to override all these generic context values with the ones in the actual item's object
     # Place them as the default values.
     # Validation is required in this form
-    context = {
-        'page_name': "Item Display",
-        'category': "Generic Category",
-        'item': "Generic Item",
-        'base_bid': 100,
-        'high': 300,
-        'description': "generic description",
-        'seller': "Generic Seller",
-        "cat_id": 9,
-        "button_text": "Add Product"
-
-    }
-    context['seller'] = request.session['username']
+    context = {'page_name': "Item Display", 'category': "Generic Category", 'item': "Generic Item", 'base_bid': 100,
+               'high': 300, 'description': "generic description", 'seller': request.session['username'], "cat_id": 9,
+               "button_text": "Add Product"}
     if request.method == 'POST':
         context['category'] = request.POST['category']
         user = User.objects.get(id=request.session['userid'])
@@ -90,7 +80,8 @@ def display_seller_mod(request):
         product.description = request.POST['description']
         product.minimum_bid = request.POST['base_bid']
         product.current_high_bid = 0
-        product.image_link = "https://www.google.com/search?q=question+paper+image&rlz=1C1CHBD_enIN746IN746&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjRoZP21bThAhURwqYKHZT0C8QQ_AUIDigB&biw=1367&bih=633#"
+        product.image_link = "https://www.google.com/search?q=question+paper+image&rlz=1C1CHBD_enIN746IN746&source" \
+                             "=lnms&tbm=isch&sa=X&ved=0ahUKEwjRoZP21bThAhURwqYKHZT0C8QQ_AUIDigB&biw=1367&bih=633# "
         if product.category == 'Textbooks':
             product.cat_id = 1
         elif product.category == 'QPs':
