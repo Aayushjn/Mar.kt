@@ -16,7 +16,7 @@
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Voltaire" rel="stylesheet">
   <link href="{% static 'homepage/css/font-awesome.min.css' %}" rel="stylesheet">
-  
+
   <!-- CSS Files -->
   <link href="{% static 'homepage/css/bootstrap.min.css' %}" rel="stylesheet" />
   <link href="{% static 'homepage/css/paper-dashboard.css' %}" rel="stylesheet" />
@@ -28,7 +28,7 @@
    <link href="{% static 'homepage/css/dash.css' %}" rel="stylesheet">
    <link href="{% static 'buyer/css/buyer-dashboard.css' %}" rel="stylesheet">
 
-  
+
 </head>
 
 <body class="">
@@ -75,7 +75,7 @@
               <p>Buyer Dashboard</p>
             </a>
           </li>
-          
+
         </ul>
       </div>
     </div>
@@ -145,14 +145,14 @@
       </nav>
       <!-- End Navbar -->
       <!-- <div class="panel-header panel-header-lg">
-  
+
   <canvas id="bigDashboardChart"></canvas>
-  
-  
+
+
 </div> -->
       <div class="content">
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
               <a href="{% url 'seller:listings' cat_id %}">
             <div class="card card-stats">
               <div class="card-body ">
@@ -174,7 +174,8 @@
             </div>
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
+            <a href="{% url 'seller:mod' -1 %}">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -193,8 +194,9 @@
                 </div>
               </div>
             </div>
+          </a>
           </div>
-          <div class="col-sm-4">
+          <!-- <div class="col-sm-4">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -213,7 +215,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="row">
           <div class="col-md-12">
@@ -333,17 +335,17 @@
   <script src="{% static 'homepage/js/popper.min.js' %}"></script>
   <script src="{% static 'homepage/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'homepage/js/perfect-scrollbar.jquery.min.js' %}"></script>
-  
+
   <!-- Chart JS -->
   <script src="{% static 'homepage/js/chartjs.min.js' %}"></script>
-  
+
   <!--  Notifications Plugin    -->
   <script src="{% static 'homepage/js/bootstrap-notify.js' %}"></script>
-  
+
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{% static 'homepage/js/dash.js' %}" type="text/javascript"></script>
-  
- 
+
+
 </body>
 
 </html>
