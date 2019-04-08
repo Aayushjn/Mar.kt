@@ -43,7 +43,7 @@
             <img src="../assets/img/logo-small.png">
           </div>
         </a> -->
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="{% url 'homepage:home' %}" class="simple-text logo-normal">
           <div class="logo-image-big logo-image dash-logo">
             <img src="{% static 'homepage/img/logo3.png' %}">
           </div>
@@ -203,11 +203,10 @@
                             <p class="description_custom">Enter your bid amount below
                           <form method="POST">
                                 {% csrf_token %}
-                            <input id="bid_value" name="bid_value" type="number" min="{{base_bid}}" placeholder= "{{ base_bid }}" > &nbsp;
-                          </br>
-                            <input type = "submit" id="bid_button" name="Bid" value="Place Bid" ></input>
+                            <input id="bid_value" name="bid_value" type="number" min="{{base_bid}}" placeholder= "{{ base_bid }}" >
+                            &nbsp;
+                            <input type="submit" id="bid_button" name="Bid" value="Place Bid"/>
                           </form>
-                          </p>
                             <hr>
                             <p class="title_custom"></p>
 
