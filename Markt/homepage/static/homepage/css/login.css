@@ -394,7 +394,6 @@ input[type=checkbox]:not(old):checked + label > span:before {
   font-size: 11px;
   line-height: 1.2;
   text-align: center;
-  font-family: 'Material-Design-Iconic-Font';
   font-weight: bold; }
 
 .agree-term {

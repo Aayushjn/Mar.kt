@@ -159,33 +159,14 @@
           <div class="card-body">
             <div class="author">
                 <img class="avatar border-gray" src="{% static 'homepage/img/bluedot.png' %}" alt="...">
-                <h5 class="title">Aditi Rao</h5>
-              <p class="description">
-              @blah
-              </p>
+                <h5 class="title">{{ user.name }}</h5>
             </div>
             <p class="description text-center">
-              "I don't know what I'm doing"
+              {{ user.bio }}
             </p>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="button-container">
-              <div class="row">
-                <div class="col-lg-3 col-md-6 col-6 ml-auto">
-                  <h5>3
-                    <br>
-                    <small>Year</small>
-                  </h5>
-                </div>
-                <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
-                  <h5>IT
-                    <br>
-                    <small>Department</small>
-                  </h5>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -195,24 +176,34 @@
             <h5 class="card-title">Edit Profile</h5>
           </div>
           <div class="card-body">
-            <form>
+            <form method="POST">
+              {% csrf_token %}
+              {% if updated %}
+                <div class="row">
+                    <div class="col-md-5 pr-1">
+                        <div class="form-group text-success">
+                          User Details Successfully Updated
+                        </div>
+                      </div>
+                </div>
+              {% endif %}
               <div class="row">
                 <div class="col-md-5 pr-1">
                   <div class="form-group">
                     <label>Email (disabled)</label>
-                    <input type="text" class="form-control" disabled="" placeholder="someone@nitk.edu.in" value="aditi@nitk.edu.in">
+                    <input type="text" class="form-control" disabled="" placeholder={{ user.email_id }} value={{ user.email_id }}>
                   </div>
                 </div>
                 <div class="col-md-3 px-1">
                   <div class="form-group">
                     <label>Username</label>
-                    <input type="text" class="form-control" placeholder="Username" value="Aditi Rao">
+                    <input type="text" name="nameupd" class="form-control" placeholder={{ user.name }} value={{ user.name }} required>
                   </div>
                 </div>
                 <div class="col-md-4 pl-1">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Phone Number</label>
-                    <input type="number" class="form-control" placeholder="+91 ----------">
+                    <input type="number" name="phupd" class="form-control" value={{ user.phone_number }} placeholder={{ user.phone_number }} >
                   </div>
                 </div>
               </div>
@@ -221,21 +212,7 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Share Number</label><br>
                     <label>By clicking this your number will be sent as a contact link for all message responses to a contact request.</label><br>
-                    Share my Number: <input type="checkbox" class="form-control" selected="true">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 pr-1">
-                  <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" class="form-control" placeholder="First Name" value="Aditi">
-                  </div>
-                </div>
-                <div class="col-md-6 pl-1">
-                  <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" placeholder="Last Name" value="Rao">
+                    Share my Number:   <input type="checkbox" name="numshare" class="form-control" checked="checked">
                   </div>
                 </div>
               </div>
@@ -243,7 +220,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>About Me</label>
-                    <textarea class="form-control textarea">Here cause I need them $$$$$ </textarea>
+                    <textarea name="bioupd" class="form-control textarea" >{{ user.bio }} </textarea>
                   </div>
                 </div>
               </div>
@@ -262,17 +239,6 @@
         <div class="container-fluid">
           <div class="row">
             <nav class="footer-nav">
-              <!-- <ul>
-                <li>
-                  <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
-                </li>
-                <li>
-                  <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
-                </li>
-                <li>
-                  <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
-                </li>
-              </ul> -->
             </nav>
             <div class="credits ml-auto">
               <span class="copyright">

@@ -172,7 +172,15 @@
                         <!-- <button name="modify-listing" id="mod-list" action="%url ">Modify Listing</button><button name="delete-listing" id="del-list">Delete Listing</button><br> -->
                         <p class="title_custom">Item Name: <input id="name" name="name" type="text" value={{item}}></p>
 
-                        <p class="category_custom">Item Category: <input id="category" name="category" type="text" value="{{ category }}"></p>
+                        <p class="category_custom">Item Category: 
+                            <select name="category" value={{ category }}>
+                                <option value="1">Textbooks</option>
+                                <option value="2">QPs</option>
+                                <option value="3">Notes</option>
+                                <option value="4">Furniture</option>
+                              </select>
+                        </p>
+
                         <p class="category_custom">Sold by {{ seller }}</p>
                         <br>
                         <p class="description_custom">Item Description:
@@ -184,7 +192,7 @@
                         {% if delete_button %}
                         <input type="submit" name="delete-listing" id="del-list" value="Delete Listing"></input>
                         {% endif %}
-                        <!-- <button name="delete-listing" id="del-list">Delete Listing</button><br> -->
+                       
                         </form>
                       </div>
                       <div class="col-2"></div>

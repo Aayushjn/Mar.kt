@@ -59,7 +59,7 @@ def display_seller_item(request, item_id):
     return render(request, 'seller/seller-item.html', context)
 
 
-def display_seller_mod(request):
+def display_seller_mod(request,item_id):
     ##### NOTE ######
     # basically we run a check to see if a product ID is being passed
     # if it is, the button value changes to "modify"
@@ -70,12 +70,12 @@ def display_seller_mod(request):
     # Validation is required in this form
     context = {
         'page_name': "Item Display",
-        'category': "Generic Category",
-        'item': "Generic Item",
-        'base_bid': 100,
+        'category': "Item category",
+        'item': "New Item",
+        'base_bid': 0,
         'high': 300,
-        'description': "generic description",
-        'seller': "Generic Seller",
+        'description': "Add a description",
+        'seller': request.session['username'],
         "cat_id":9,
         "button_text": "Add Product",
         "delete_button": True
