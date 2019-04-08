@@ -12,13 +12,14 @@ def display_seller_dash(request):
         'item': "Generic Item",
         'base_bid': 100,
         'high': 300,
-        'cat_id':9,
+        'cat_id': 9,
 
     }
 
     return render(request, 'seller/seller-dashboard.html', context)
 
-def display_seller_list(request,category_id):
+
+def display_seller_list(request, category_id):
     context = {
         'page_name': "Seller Listings",
         'category': "Generic Category",
@@ -27,15 +28,16 @@ def display_seller_list(request,category_id):
         # 'id':0,
     }
 
-    items = Product.objects.filter(vendor_id = request.session['userid'])
+    items = Product.objects.filter(vendor_id=request.session['userid'])
     context['items'] = items
     return render(request, 'seller/seller-listings.html', context)
 
-def display_seller_item(request,item_id):
+
+def display_seller_item(request, item_id):
     context = {
         'page_name': "Item Display",
         'category': "Generic Category",
-        'cat_id':9,
+        'cat_id': 9,
         'item': "Generic Item",
         'base_bid': 100,
         'high': 300,
@@ -56,13 +58,13 @@ def display_seller_item(request,item_id):
 
     return render(request, 'seller/seller-item.html', context)
 
-def display_seller_mod(request, item_id):
 
+def display_seller_mod(request):
     ##### NOTE ######
-    #basically we run a check to see if a product ID is being passed
-    #if it is, the button value changes to "modify"
-    #else it is "add product"
-    #Also, if the product ID exists, then the product exists so in the if statement you
+    # basically we run a check to see if a product ID is being passed
+    # if it is, the button value changes to "modify"
+    # else it is "add product"
+    # Also, if the product ID exists, then the product exists so in the if statement you
     # need to override all these generic context values with the ones in the actual item's object
     # Place them as the default values.
     # Validation is required in this form
@@ -101,7 +103,7 @@ def display_seller_mod(request, item_id):
         if 'delete-listing' in request.POST:
             p.delete()
             return redirect(reverse('seller:dashboard'))
-            
+
         if request.method == 'POST' and context['button_text'] == 'Modify Product':
             p.name = request.POST['name']
             p.category = request.POST['category']
@@ -130,7 +132,8 @@ def display_seller_mod(request, item_id):
         product.description = request.POST['description']
         product.minimum_bid = request.POST['base_bid']
         product.current_high_bid = 0
-        product.image_link = "https://www.google.com/search?q=question+paper+image&rlz=1C1CHBD_enIN746IN746&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjRoZP21bThAhURwqYKHZT0C8QQ_AUIDigB&biw=1367&bih=633#"
+        product.image_link = "https://www.google.com/search?q=question+paper+image&rlz=1C1CHBD_enIN746IN746&source" \
+                             "=lnms&tbm=isch&sa=X&ved=0ahUKEwjRoZP21bThAhURwqYKHZT0C8QQ_AUIDigB&biw=1367&bih=633# "
         if product.category == 'Textbooks':
             product.cat_id = 1
         elif product.category == 'QPs':
