@@ -53,14 +53,14 @@ def display_buyer_item(request, item_id):
         return redirect(reverse('homepage:home'))
     
     product=Product.objects.get(id=item_id)
-
+    
     context = {
         'page_name': "Item Display",
         'product':product,
         'cat_id':9,
     }
 
-    if product.vendor_id!=request.session['userid']:
+    if product.vendor_id.id!=request.session['userid']:
         context['notmyproduct']=True
 
     if request.method == 'POST':
@@ -76,8 +76,8 @@ def display_buyer_item(request, item_id):
         product.save()
 
         reply=Mail()
-        reply.buyer_id=user
-        reply.vendor_id=product.vendor_id
+        reply.sender_id=user
+        reply.recv_id=product.vendor_id
         reply.bid_id=bid
         reply.message_type=1
         reply.save()

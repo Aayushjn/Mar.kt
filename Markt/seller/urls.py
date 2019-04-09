@@ -1,6 +1,10 @@
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+from django.views.static import serve
+
+from Markt import settings
 from . import views
 
 
@@ -15,3 +19,11 @@ urlpatterns = [
 
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
+    # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -13,8 +13,8 @@ class Bid(models.Model):
 
 
 class Mail(models.Model):
-    buyer_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='buy_id')
-    vendor_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='vend_id')
+    sender_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='buy_id')
+    recv_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='vend_id')
     bid_id = models.ForeignKey(Bid, on_delete=models.CASCADE)
     message_type = models.PositiveSmallIntegerField()
     created = models.DateTimeField(auto_now_add=True)

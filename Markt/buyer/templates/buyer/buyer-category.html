@@ -43,7 +43,7 @@
           <img src="../assets/img/logo-small.png">
         </div>
       </a> -->
-      <a href="{% url 'homepage:home' %}" class="simple-text logo-normal">
+      <a href="{% url 'homepage:dash_home' %}" class="simple-text logo-normal">
         <div class="logo-image-big logo-image dash-logo">
           <img src="{% static 'homepage/img/logo3.png' %}">
         </div>
@@ -134,7 +134,7 @@
                 <div class="card-body">
                   <div class="row text-center">
                     <div class="col-4">
-                        <img class="product_img" src="{% static 'seller/img/items/item.jpeg' %}">
+                        <img class="product_img" src="{{ p.image_link }}">
                     </div>
                     <div class="col-8">
                       <div class="numbers">

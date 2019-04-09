@@ -9,7 +9,7 @@
   <link href="{% static 'homepage/img/favicon.png' %}" rel="icon"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
   <title>
-    {{page_name}} | Mar.kt
+    {{ product.name }} | Mar.kt
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
@@ -43,7 +43,7 @@
             <img src="../assets/img/logo-small.png">
           </div>
         </a> -->
-        <a href="{% url 'homepage:home' %}" class="simple-text logo-normal">
+        <a href="{% url 'homepage:dash_home' %}" class="simple-text logo-normal">
           <div class="logo-image-big logo-image dash-logo">
             <img src="{% static 'homepage/img/logo3.png' %}">
           </div>
@@ -92,7 +92,7 @@
               </button>
             </div>
             <div class="navbar-brand">
-            <a href="{% url 'buyer:dashboard' %}"> Seller Dashboard </a> <a href="{% url 'buyer:category' cat_id %}"> | {{ category}}</a> <a href=""> | {{ item }}</a>
+            <a href="{% url 'buyer:dashboard' %}"> Seller Dashboard </a> <a href="{% url 'buyer:category' product.cat_id %}"> | {{ product.category }}</a> <a href=""> | {{ product.name  }}</a>
           </div>
           </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
@@ -131,7 +131,7 @@
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
-                    <img class="product_img" src="{% static 'homepage/img/bluedot.png' %}">
+                    <img class="product_img" src="{{ product.image_link }}">
                 </div>
               </div>
             </div>
@@ -143,14 +143,18 @@
                     <div class="col-1"></div>
                     <div class="col-8">
                       <div class="text-left">
-                        <p class="title_custom">{{item}}</p><a href="{% url 'seller:mod' id%}" name="modify-listing" id="mod-list">Modify Listing</a>
-                        <p class="category_custom">{{ category }}</p>
-                        <p class="category_custom">Sold by {{ seller }}</p>
+                        <p class="title_custom">{{ product.name }} </p>
+                        <p class="category_custom">{{ product.category }}</p>
+                        <p class="category_custom">Sold by {{ product.vendor_id.name }}</p>
                         <br>
-                        <p class="description_custom">{{description}}
+                        <p class="description_custom">{{product.description}}
                           </p>
                         <hr>
-                        <p class="title_custom">Base Bid : {{ base_bid }} | Highest : {{ high }}  </p>
+                        <p class="title_custom">Base Bid : {{ product.minimum_bid }} | Highest : {{ product.current_high_bid }}  </p>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                      <a href="{% url 'seller:mod' product.id %}" name="modify-listing" id="mod-list"><button>Modify Listing</button></a></div>
 
 
                       </div>
@@ -159,9 +163,7 @@
                   </div>
                 </div>
               </div>
-            </div>
 
-        </div>
         <div class="row">
             <div class="col-sm-12">
               <div class="card card-stats">
@@ -176,42 +178,24 @@
                               <th>
                                 Buyer
                               </th>
-                              <th>
-                                Message
-                              </th>
                               <th >
                                 Timestamp
                               </th>
                             </thead>
                             <tbody>
+                            {% for bid in bids %}
                               <tr>
                                 <td>
-                                  10
+                                  {{ bid.price }}
                                 </td>
                                 <td>
-                                  Aayush
-                                </td>
-                                <td>
-                                  Hi can I have notes
+                                  {{ bid.buyer_id.name }}
                                 </td>
                                 <td >
-                                  10:20
+                                  {{ bid.timestamp }}
                                 </td>
                               </tr>
-                              <tr>
-                                <td>
-                                  1000
-                                </td>
-                                <td>
-                                  Spandana
-                                </td>
-                                <td>
-                                  Hi pls give my notes
-                                </td>
-                                <td >
-                                  12:00
-                                </td>
-                              </tr>
+                              {% endfor %}
                             </tbody>
                           </table>
                         </div>

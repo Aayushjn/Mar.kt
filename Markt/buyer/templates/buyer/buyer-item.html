@@ -9,7 +9,7 @@
   <link href="{% static 'homepage/img/favicon.png' %}" rel="icon"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
   <title>
-    {{ item }} | Mar.kt
+    {{ product.name }} | Mar.kt
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
@@ -43,7 +43,7 @@
             <img src="../assets/img/logo-small.png">
           </div>
         </a> -->
-        <a href="{% url 'homepage:home' %}" class="simple-text logo-normal">
+        <a href="{% url 'homepage:dash_home' %}" class="simple-text logo-normal">
           <div class="logo-image-big logo-image dash-logo">
             <img src="{% static 'homepage/img/logo3.png' %}">
           </div>
@@ -92,7 +92,7 @@
               </button>
             </div>
             <div class="navbar-brand">
-            <a href="{% url 'buyer:dashboard' %}"> Buyer Dashboard </a> <a href="{% url 'buyer:category' cat_id %}"> | {{ category}}</a> <a href=""> | {{ item }}</a>
+            <a href="{% url 'buyer:dashboard' %}"> Buyer Dashboard </a> <a href="{% url 'buyer:category' cat_id %}"> | {{ product.category }}</a> <a href=""> | {{ product.name }}</a>
           </div>
           </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
@@ -131,7 +131,7 @@
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
-                    <img class="product_img" src="{% static 'homepage/img/bluedot.png' %}">
+                    <img class="product_img" src="{{ product.image_link }}">
                 </div>
               </div>
             </div>
@@ -195,7 +195,7 @@
                 </div>
               </div>
             </div>
-            {% endif %}
+          {% endif %}
 
 
           </div>

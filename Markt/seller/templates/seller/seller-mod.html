@@ -9,7 +9,8 @@
   <link href="{% static 'homepage/img/favicon.png' %}" rel="icon"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
   <title>
-    {{page_name}} | Mar.kt
+    {% if editprod %}
+    {{ product.name }} {% endif %} {% if newprod %} New Product {% endif %}| Mar.kt
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
@@ -43,7 +44,7 @@
             <img src="../assets/img/logo-small.png">
           </div>
         </a> -->
-        <a href="{% url 'homepage:home' %}" class="simple-text logo-normal">
+        <a href="{% url 'homepage:dash_home' %}" class="simple-text logo-normal">
           <div class="logo-image-big logo-image dash-logo">
             <img src="{% static 'homepage/img/logo3.png' %}">
           </div>
@@ -92,7 +93,12 @@
               </button>
             </div>
             <div class="navbar-brand">
+              {% if editprod %}
             <a href="{% url 'buyer:dashboard' %}"> Seller Dashboard </a> <a href="{% url 'buyer:category' cat_id %}"> | {{  product.category }}</a> <a href=""> | {{ product.name }}</a>
+            {% endif%}
+            {% if newprod %}
+            <a href="{% url 'buyer:dashboard' %}"> Seller Dashboard </a>  | New Product
+            {% endif %}
           </div>
           </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
@@ -131,7 +137,12 @@
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
+                  {% if newprod %}
                     <img class="product_img" src="{% static 'homepage/img/bluedot.png' %}">
+                  {% endif %}
+                  {% if editprod %}
+                  <img class="product_img" src={{ product.image_link }}>
+                  {% endif %}
                 </div>
               </div>
             </div>
@@ -143,7 +154,7 @@
                     <div class="col-2"></div>
                     <div class="col-8">
                       <div class="text-left">
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                           {% csrf_token%}
                         <!-- <button name="modify-listing" id="mod-list" action="%url ">Modify Listing</button><button name="delete-listing" id="del-list">Delete Listing</button><br> -->
                         <p class="title_custom">Item Name: <input id="name" name="name" type="text" value={{item}}></p>
@@ -157,7 +168,7 @@
                               </select>
                         </p>
 
-                        <p class="category_custom">Sold by {{ product.vendor_id.name }}</p>
+                        <p class="category_custom">Sold by {{ username }}</p>
                         <br>
                         <p class="description_custom">Item Description:
                           </p>
@@ -185,6 +196,12 @@
                 <div class="card-body ">
                   <div class="row">
                       <div class="col-12 text-left">
+                        {% if errorm%}
+                        <div class="text-danger">
+                          You need to upload an image!
+                        </div>
+                        {% endif %}
+                        <form method="POST" enctype="multipart/form-data">
                           <table class="table">
                             <thead class=" text-primary">
                               <th>
@@ -194,7 +211,7 @@
                             <tbody>
                               <tr>
                                 <td>
-                                    <input type="file" name="filename" accept="image/gif, image/jpeg, image/png">
+                                    <input type="file" name="filename" accept="image/gif, image/jpeg, image/png" value={{ product.image_link }}>
                                 </td>
                               </tr>
                               <tr>
