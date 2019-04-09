@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from urllib import request
 from .models import User
+from seller.models import Mail,Bid
+import operator
 
 
 def display_home(request):
@@ -105,24 +107,40 @@ def display_dash_home(request):
 def display_mail_home(request):
     if 'userid' not in request.session.keys() :
         return redirect(reverse('homepage:home'))
+    uid=request.session['userid']
+    mails= Mail.objects.filter(buyer_id=uid)|Mail.objects.filter(vendor_id=uid)
+    mails=sorted(mails, key=operator.attrgetter('-created'))
+    mails=list(mails)
     context = {
-        'page_name': "Mailbox"
+        'page_name': "Mailbox",
+        'mails':mails,
     }
 
     return render(request, 'homepage/mailbox.html', context)
 
 
-def display_mail(request):
+def display_mail(request,mail_id):
 
     if 'userid' not in request.session.keys() :
         return redirect(reverse('homepage:home'))
+    mail=Mail.objects.get(id=mail_id)
 
     context = {
-        'page_name': "Mail View",
-        'mail_title': "Send Notes Pls",
-        'mail_sender': "Spandu",
-        'mail_text': "Yo bro send notes",
-        'mail_sent': "Now",
+        'page_name': mail.bid_id.product_id.name, 
+        'mail_title':  mail.bid_id.product_id.name,
+        'mail_sender':  mail.buyer_id.name,
+        'mail':mail,
     }
+    if mail.message_type==1:
+        context['newbid']=True
+    if mail.message_type==2:
+        context['contact_reply']==True
+        if mail.vendor_id.share_phone==True:
+            context['sharephone']=True
+    if request.method=="POST":
+        # TODO:
+        #create a new mail to send back to person who sent it
+        context['sending_done']=True
+
 
     return render(request, 'homepage/mail-view.html', context)

@@ -90,7 +90,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">{{ page_name }}</a>
+            <a class="navbar-brand" href="">{{ page_name }}</a>
           </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
               <form>
@@ -141,47 +141,26 @@
                   Listing
                 </th>
                 <th>
-                  Message
-                </th>
-                <th >
-                  Opened
+                  Bid Amount
                 </th>
               </thead>
               <tbody>
-               
+              {% for mail in mails %}    
                 <tr>
-                  
                   <td>
-                    Aayush
+                    {{ mail.buyer_id.name }}
                   </td>
                   <td>
-                    Notes - SE
+                    {{ mail.bid_id.product_id.name }}
                   </td>
                   <td>
-                      <a href="{% url 'homepage:mail_view' %}">
-                    Hi can I have notes
+                      <a href="{% url 'homepage:mail_view' {{ mail.id }} %}">
+                    {{ mail.bid_id.price }}
                   </a>
                   </td>
-                  <td >
-                    New!
-                  </td>
-                
                 </tr>
+              {% endfor %}
                 
-                <tr>
-                  <td>
-                    Spandana
-                  </td>
-                  <td>
-                    Notes - SE
-                  </td>
-                  <td>
-                    Hi take my notes
-                  </td>
-                  <td >
-                    New!
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>

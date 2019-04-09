@@ -131,12 +131,25 @@
               <p class="card-category"> {{ mail_sender }}</p>
             </div>
             <div class="card-body ">
-              <p> {{ mail_text }} </p>
+              {% if sending_done %}
+              <div class="text-success">
+                Your Reply has been sent<br>
+              </div>
+              {% endif %}
+            <form method="POST">
+              {% if newbid %}
+              <p> Hello {{ mail.vendor_id.name }}<br>I was interested in bidding on your item {{ mail.title }} and am currently willing to pay Rs.{{ mail.bid_id.price }}.<br>
+              Please share your contact details if you are interested in my offer by clicking the button below:<br>
+            <button type="submit">Share my details</button></p>
+              {% endif %}
+              {% if contact_reply %}
+              {% endif %}
+            </form>
             </div>
             <div class="card-footer ">
               <hr>
               <div class="stats">
-                <i class="fa fa-history"></i> {{ mail_sent }}
+                
               </div>
             </div>
           </div>
