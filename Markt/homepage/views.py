@@ -17,7 +17,6 @@ def display_home(request):
 
 
 def display_login(request):
-    # TODO : errormessage display in login.html
     request.session.flush()
     if request.method == 'POST':
         context = {}

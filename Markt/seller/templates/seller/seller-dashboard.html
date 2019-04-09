@@ -199,6 +199,7 @@
               </div>
               <div class="card-body ">
                 <div class="row">
+                  {% if item1 %}
                   <div class="col-sm-4">
                       <div class="card card-stats">
                         <div class="card-body">
@@ -208,8 +209,8 @@
                             </div>
                             <div class="col-8">
                               <div class="numbers">
-                                <p class="card-category">{{ category }}</p>
-                                <p class="card-title">Generic Item
+                                <p class="card-category">{{ item1.category }}</p>
+                                <p class="card-title">{{ item1.name }}
                                   <p>
                               </div>
                             </div>
@@ -217,10 +218,12 @@
                         </div>
                         <div class="card-footer text-center">
                           <hr>
-                          Base Bid : {{ base_bid }} | Highest : {{ high }}
+                          Base Bid : {{ item1.minimum_bid }} | Highest : {{ item1.current_high_bid }}
                         </div>
                       </div>
                   </div>
+                  {% endif %}
+                  {% if item2 %}
                   <div class="col-sm-4">
                       <div class="card card-stats">
                         <div class="card-body">
@@ -230,8 +233,8 @@
                             </div>
                             <div class="col-8">
                               <div class="numbers">
-                                <p class="card-category">{{ category }}</p>
-                                <p class="card-title">Generic Item
+                                <p class="card-category">{{ item2.category }}</p>
+                                <p class="card-title">{{ item2.name }}
                                   <p>
                               </div>
                             </div>
@@ -239,10 +242,12 @@
                         </div>
                         <div class="card-footer text-center">
                           <hr>
-                          Base Bid : {{ base_bid }} | Highest : {{ high }}
+                          Base Bid : {{ item2.minimum_bid }} | Highest : {{ item2.current_high_bid }}
                         </div>
                       </div>
                   </div>
+                  {% endif %}
+                  {% if item3 %}
                   <div class="col-sm-4">
                       <div class="card card-stats">
                         <div class="card-body">
@@ -252,8 +257,8 @@
                             </div>
                             <div class="col-8">
                               <div class="numbers">
-                                <p class="card-category">{{ category }}</p>
-                                <p class="card-title">Generic Item
+                                <p class="card-category">{{ item3.category }}</p>
+                                <p class="card-title">{{ item3.name }}
                                   <p>
                               </div>
                             </div>
@@ -261,10 +266,13 @@
                         </div>
                         <div class="card-footer text-center">
                           <hr>
-                          Base Bid : {{ base_bid }} | Highest : {{ high }}
+                          Base Bid : {{ item3.minimum_bid }} | Highest : {{ item3.current_high_bid }}
                         </div>
                       </div>
                   </div>
+                  {% endif %}
+                  
+                 
                 </div>
               </div>
               <div class="card-footer ">

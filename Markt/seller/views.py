@@ -6,20 +6,31 @@ import pdb;
 # Create your views here.
 
 def display_seller_dash(request):
+    if 'userid' not in request.session.keys() :
+        return redirect(reverse('homepage:home'))
     context = {
         'page_name': "Seller Dashboard",
-        'category': "Generic Category",
-        'item': "Generic Item",
-        'base_bid': 100,
-        'high': 300,
-        'cat_id': 9,
-
+        "cat_id":9,
     }
+    userid=request.session['userid']
+    products=Product.objects.filter(vendor_id=userid).order_by('-current_high_bid')[:3]
+    products=list(products)
+    while len(products)<3:
+        products.append(None)
+    if products[0] is not None:
+        context['item1']=products[0]
+    if products[0] is not None:
+        context['item2']=products[1]
+    if products[0] is not None:
+        context['item3']=products[2]
+    
 
     return render(request, 'seller/seller-dashboard.html', context)
 
 
 def display_seller_list(request, category_id):
+    if 'userid' not in request.session.keys() :
+        return redirect(reverse('homepage:home'))
     context = {
         'page_name': "Seller Listings",
         'category': "Generic Category",
@@ -34,6 +45,8 @@ def display_seller_list(request, category_id):
 
 
 def display_seller_item(request, item_id):
+    if 'userid' not in request.session.keys() :
+        return redirect(reverse('homepage:home'))
     context = {
         'page_name': "Item Display",
         'category': "Generic Category",
@@ -68,6 +81,8 @@ def display_seller_mod(request,item_id):
     # need to override all these generic context values with the ones in the actual item's object
     # Place them as the default values.
     # Validation is required in this form
+    if 'userid' not in request.session.keys() :
+        return redirect(reverse('homepage:home'))
     context = {
         'page_name': "Item Display",
         'category': "Item category",

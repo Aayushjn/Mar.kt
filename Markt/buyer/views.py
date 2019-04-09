@@ -10,6 +10,8 @@ from homepage.models import User
 
 # Create your views here.
 def display_buyer_dash(request):
+    if 'userid' not in request.session.keys() :
+        return redirect(reverse('homepage:home'))
     context = {
         'page_name': "Buyer Dashboard",
         # 'cat_id':9
@@ -18,6 +20,8 @@ def display_buyer_dash(request):
 
 
 def display_buyer_cat(request, category_id):
+    if 'userid' not in request.session.keys() :
+        return redirect(reverse('homepage:home'))
     context = {
         'page_name': "Buyer Dashboard",
         'category': "Generic Category",
@@ -46,6 +50,8 @@ def display_buyer_cat(request, category_id):
 
 
 def display_buyer_item(request, item_id):
+    if 'userid' not in request.session.keys() :
+        return redirect(reverse('homepage:home'))
     context = {
         'page_name': "Item Display",
         'category': "Generic Category",
