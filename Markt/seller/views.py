@@ -1,35 +1,34 @@
-from django.shortcuts import render, redirect, reverse
 from buyer.models import Product
+from django.shortcuts import render, redirect, reverse
 from homepage.models import User
-from .models import Bid, Mail
-import pdb;
+
+
 # Create your views here.
 
 def display_seller_dash(request):
-    if 'userid' not in request.session.keys() :
+    if 'userid' not in request.session.keys():
         return redirect(reverse('homepage:home'))
     context = {
         'page_name': "Seller Dashboard",
-        "cat_id":9,
+        "cat_id": 9,
     }
-    userid=request.session['userid']
-    products=Product.objects.filter(vendor_id=userid).order_by('-current_high_bid')[:3]
-    products=list(products)
-    while len(products)<3:
+    userid = request.session['userid']
+    products = Product.objects.filter(vendor_id=userid).order_by('-current_high_bid')[:3]
+    products = list(products)
+    while len(products) < 3:
         products.append(None)
     if products[0] is not None:
-        context['item1']=products[0]
+        context['item1'] = products[0]
     if products[0] is not None:
-        context['item2']=products[1]
+        context['item2'] = products[1]
     if products[0] is not None:
-        context['item3']=products[2]
-    
+        context['item3'] = products[2]
 
     return render(request, 'seller/seller-dashboard.html', context)
 
 
 def display_seller_list(request, category_id):
-    if 'userid' not in request.session.keys() :
+    if 'userid' not in request.session.keys():
         return redirect(reverse('homepage:home'))
     context = {
         'page_name': "Seller Listings",
@@ -45,7 +44,7 @@ def display_seller_list(request, category_id):
 
 
 def display_seller_item(request, item_id):
-    if 'userid' not in request.session.keys() :
+    if 'userid' not in request.session.keys():
         return redirect(reverse('homepage:home'))
     context = {
         'page_name': "Item Display",
@@ -56,7 +55,7 @@ def display_seller_item(request, item_id):
         'high': 300,
         'description': "",
         'seller': "Generic Seller",
-        'id':id,
+        'id': id,
     }
     p = Product.objects.get(id=item_id)
     context['category'] = p.category
@@ -68,11 +67,10 @@ def display_seller_item(request, item_id):
     context['seller'] = p.vendor_id.name
     context['id'] = p.id
 
-
     return render(request, 'seller/seller-item.html', context)
 
 
-def display_seller_mod(request,item_id):
+def display_seller_mod(request, item_id):
     ##### NOTE ######
     # basically we run a check to see if a product ID is being passed
     # if it is, the button value changes to "modify"
@@ -81,22 +79,11 @@ def display_seller_mod(request,item_id):
     # need to override all these generic context values with the ones in the actual item's object
     # Place them as the default values.
     # Validation is required in this form
-    if 'userid' not in request.session.keys() :
+    if 'userid' not in request.session.keys():
         return redirect(reverse('homepage:home'))
-    context = {
-        'page_name': "Item Display",
-        'category': "Item category",
-        'item': "New Item",
-        'base_bid': 0,
-        'high': 300,
-        'description': "Add a description",
-        'seller': request.session['username'],
-        "cat_id":9,
-        "button_text": "Add Product",
-        "delete_button": True
-    }
-
-    context['seller'] = request.session['username']
+    context = {'page_name': "Item Display", 'category': "Item category", 'item': "New Item", 'base_bid': 0, 'high': 300,
+               'description': "Add a description", 'seller': request.session['username'], "cat_id": 9,
+               "button_text": "Add Product", "delete_button": True}
 
     # to modify a product
     if item_id != "-1":
@@ -159,4 +146,19 @@ def display_seller_mod(request,item_id):
             product.cat_id = 4
         product.save()
         return redirect(reverse('seller:dashboard'))
+
+    if request.method == 'POST' and "img-submit" in request.POST:
+        context['category'] = request.POST['category']
+        user = User.objects.get(id=request.session['userid'])
+        product = Product()
+        product.name = request.POST['name']
+        product.category = request.POST['category']
+        product.vendor_id = user
+        product.description = request.POST['description']
+        product.minimum_bid = request.POST['base_bid']
+        product.current_high_bid = 0
+        product.image_link = request.FILES['file']
+        product.save()
+        return redirect(reverse('seller:dashboard'))
+
     return render(request, 'seller/seller-mod.html', context)

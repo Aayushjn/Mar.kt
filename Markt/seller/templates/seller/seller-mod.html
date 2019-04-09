@@ -185,6 +185,8 @@
                 <div class="card-body ">
                   <div class="row">
                       <div class="col-12 text-left">
+                        <form method="POST" >
+                          {% csrf_token %}
                           <table class="table">
                             <thead class=" text-primary">
                               <th>
@@ -200,11 +202,12 @@
                               <tr>
                                 <td></td>
                                 <td>
-                                  <button id="img-submit">Update Image</button>
+                                  <button name="img-submit" type="submit">Update Image</button>
                                 </td>
                               </tr>
                             </tbody>
                           </table>
+                        </form>
                         </div>
                   </div>
                 </div>
