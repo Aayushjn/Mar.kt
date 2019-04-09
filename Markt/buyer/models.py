@@ -12,4 +12,4 @@ class Product(models.Model):
     description = models.CharField(max_length=300)
     minimum_bid = models.FloatField()
     current_high_bid = models.FloatField()
-    image_link = models.CharField(max_length=100)
+    image_link = models.FileField(upload_to='products/')

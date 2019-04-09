@@ -127,9 +127,5 @@ STATICFILES_DIRS = [
     '/buyer/static/',
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'info.team.mar.kt@gmail.com'
-EMAIL_HOST_PASSWORD = 'tOyH%i0w160aL1i7'
-EMAIL_PORT = 2000
+PRODUCTS_URL = '/products/'
+PRODUCTS_ROOT = os.path.join('homepage' + STATIC_URL, 'products')
