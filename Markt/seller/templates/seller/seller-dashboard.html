@@ -43,7 +43,7 @@
             <img src="../assets/img/logo-small.png">
           </div>
         </a> -->
-        <a href="{% url 'homepage:home' %}" class="simple-text logo-normal">
+        <a href="{% url 'homepage:dash_home' %}" class="simple-text logo-normal">
           <div class="logo-image-big logo-image dash-logo">
             <img src="{% static 'homepage/img/logo3.png' %}">
           </div>
@@ -200,6 +200,7 @@
               <div class="card-body ">
                 <div class="row">
                   {% if item1 %}
+                  <a href="{% url 'seller:mod' item1.id %}">
                   <div class="col-sm-4">
                       <div class="card card-stats">
                         <div class="card-body">
@@ -222,8 +223,10 @@
                         </div>
                       </div>
                   </div>
+                </a>
                   {% endif %}
                   {% if item2 %}
+                  <a href="{% url 'seller:mod' item2.id %}">
                   <div class="col-sm-4">
                       <div class="card card-stats">
                         <div class="card-body">
@@ -246,8 +249,10 @@
                         </div>
                       </div>
                   </div>
+                </a>
                   {% endif %}
                   {% if item3 %}
+                  <a href="{% url 'seller:mod' item3.id %}">
                   <div class="col-sm-4">
                       <div class="card card-stats">
                         <div class="card-body">
@@ -270,6 +275,7 @@
                         </div>
                       </div>
                   </div>
+                </a>
                   {% endif %}
                   
                  

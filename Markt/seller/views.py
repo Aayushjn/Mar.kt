@@ -1,8 +1,10 @@
 from buyer.models import Product
 from django.shortcuts import render, redirect, reverse
 from homepage.models import User
-
-
+from seller.models import Bid
+from django.core.files.storage import FileSystemStorage
+from Markt import settings
+import os
 # Create your views here.
 
 def display_seller_dash(request):
@@ -46,26 +48,13 @@ def display_seller_list(request, category_id):
 def display_seller_item(request, item_id):
     if 'userid' not in request.session.keys():
         return redirect(reverse('homepage:home'))
+    product = Product.objects.get(id=item_id)
     context = {
         'page_name': "Item Display",
-        'category': "Generic Category",
-        'cat_id': 9,
-        'item': "Generic Item",
-        'base_bid': 100,
-        'high': 300,
-        'description': "",
-        'seller': "Generic Seller",
-        'id': id,
+        'product':product
     }
-    p = Product.objects.get(id=item_id)
-    context['category'] = p.category
-    context['cat_id'] = p.cat_id
-    context['item'] = p.name
-    context['base_bid'] = p.minimum_bid
-    context['high'] = p.current_high_bid
-    context['description'] = p.description
-    context['seller'] = p.vendor_id.name
-    context['id'] = p.id
+    context['bids']=list(Bid.objects.filter(product_id=product).order_by('-price'))
+    
 
     return render(request, 'seller/seller-item.html', context)
 
@@ -75,7 +64,9 @@ def display_seller_mod(request, item_id):
     if 'userid' not in request.session.keys():
         return redirect(reverse('homepage:home'))
     
-    context={}
+    context={
+        'username':request.session['username']
+    }
 
     # to modify a product
     if item_id != "-1":
@@ -83,6 +74,7 @@ def display_seller_mod(request, item_id):
         context['product'] = product
         context['delete_button']=True
         context['button_text'] = "Modify Product"
+        context['editprod']=True
         if product.category == 'Textbooks':
             context['cat_id'] = 1
         elif product.category == 'QPs':
@@ -116,6 +108,7 @@ def display_seller_mod(request, item_id):
         context['product']=Product()
         context['button_text'] = "Add Product"
         context['cat_id'] = 1
+        context['newprod']=True
         
         if request.method == 'POST' and context['button_text'] == 'Add Product':
             context['category'] = request.POST['category']
@@ -126,8 +119,16 @@ def display_seller_mod(request, item_id):
             product.vendor_id = user
             product.description = request.POST['description']
             product.minimum_bid = request.POST['base_bid']
-            product.current_high_bid = 0
-            product.image_link = request.FILES['file']
+            product.current_high_bid = 0 
+            myfile= request.FILES['filename']
+            if myfile is None:
+                context['errorm']=True
+                return render(request, 'seller/seller-mod.html', context)
+
+            fs = FileSystemStorage()
+            save_path = os.path.join(settings.MEDIA_ROOT, 'uploads', myfile.name)
+            filename = fs.save(save_path, myfile)
+            product.image_link = fs.url(filename)
             if product.category == 'Textbooks':
                 product.cat_id = 1
             elif product.category == 'QPs':
@@ -149,7 +150,16 @@ def display_seller_mod(request, item_id):
             product.description = request.POST['description']
             product.minimum_bid = request.POST['base_bid']
             product.current_high_bid = 0
-            product.image_link = request.FILES['file']
+            myfile= request.FILES['filename']
+            if myfile is None:
+                context['errorm']=True
+                return render(request, 'seller/seller-mod.html', context)
+
+            fs = FileSystemStorage()
+
+            save_path = os.path.join(settings.MEDIA_ROOT, 'uploads', myfile.name)
+            filename = fs.save(save_path, myfile)
+            product.image_link = fs.url(filename)
             product.save()
             return redirect(reverse('seller:dashboard'))
 

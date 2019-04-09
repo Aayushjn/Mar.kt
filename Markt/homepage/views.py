@@ -107,14 +107,19 @@ def display_dash_home(request):
 def display_mail_home(request):
     if 'userid' not in request.session.keys() :
         return redirect(reverse('homepage:home'))
+    if request.method=="POST":
+        del_mail=Mail.objects.get(id=request.POST['delm'])
+        del_mail.delete()
+
     uid=request.session['userid']
-    mails= Mail.objects.filter(buyer_id=uid)|Mail.objects.filter(vendor_id=uid)
-    mails=sorted(mails, key=operator.attrgetter('created'))
+    mails= Mail.objects.filter(recv_id=uid).order_by('-created')
     mails=list(mails)
     context = {
         'page_name': "Mailbox",
         'mails':mails,
     }
+    
+
 
     return render(request, 'homepage/mailbox.html', context)
 
@@ -128,21 +133,21 @@ def display_mail(request,mail_id):
     context = {
         'page_name': mail.bid_id.product_id.name, 
         'mail_title':  mail.bid_id.product_id.name,
-        'mail_sender':  mail.buyer_id.name,
+        'mail_sender':  mail.sender_id.name,
         'mail':mail,
     }
     if mail.message_type==1:
         context['newbid']=True
     if mail.message_type==2:
         context['contact_reply']=True
-        if mail.vendor_id.share_phone==True:
+        if mail.sender_id.share_phone==True:
             context['sharephone']=True
     if request.method=="POST":
         # TODO:
         #create a new mail to send back to person who sent it
         reply=Mail()
-        reply.buyer_id=mail.vendor_id
-        reply.vendor_id=mail.buyer_id
+        reply.sender_id=mail.buyer_id
+        reply.recv_id=mail.sender_id
         reply.bid_id=mail.bid_id
         reply.message_type=2
         reply.save()

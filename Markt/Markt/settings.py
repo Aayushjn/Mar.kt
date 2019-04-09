@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -127,5 +128,5 @@ STATICFILES_DIRS = [
     '/buyer/static/',
 ]
 
-PRODUCTS_URL = '/products/'
-PRODUCTS_ROOT = os.path.join('homepage' + STATIC_URL, 'products')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, STATIC_URL, MEDIA_URL)

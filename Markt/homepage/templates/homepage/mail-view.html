@@ -42,7 +42,7 @@
             <img src="../assets/img/logo-small.png">
           </div>
         </a> -->
-        <a href="{% url 'homepage:home' %}" class="simple-text logo-normal">
+        <a href="{% url 'homepage:dash_home' %}" class="simple-text logo-normal">
           <div class="logo-image-big logo-image dash-logo">
             <img src="{% static 'homepage/img/logo3.png' %}">
           </div>
@@ -139,17 +139,17 @@
             <form method="POST">
               {% csrf_token %}
               {% if newbid %}
-              <p> Hello {{ mail.vendor_id.name }}<br>I was interested in bidding on your item {{ mail.title }} and am currently willing to pay Rs.{{ mail.bid_id.price }}.<br>
-              Please share your contact details if you are interested in my offer by clicking the button below:<br>
+              <p> Hello {{ mail.recv_id.name }}<br>I was interested in bidding on your <a href="{% url 'seller:item' mail.bid_id.product_id.id %}"> {{ mail.bid_id.product_id.name }} </a> and am currently willing to pay Rs.{{ mail.bid_id.price }}.<br>
+              Please share your contact details if you are interested in my offer by clicking the button :
             <button type="submit">Share my details</button></p>
               {% endif %}
               {% if contact_reply %}
-              Hello {{ mail.vendor_id.name }}
-              <br> {{ mail.buyer_id.name }} has shared their contact details with regards to your bid of Rs.{{ mail.bid_id.price }} on the item {{ mail.title }}. <br>
+              Hello {{ mail.recv_id.name }}
+              <br> {{ mail_sender }} has shared their contact details with regards to your bid of Rs.{{ mail.bid_id.price }} on the item <a href="{% url 'buyer:item' mail.bid_id.product_id.id %}"> {{ mail.bid_id.product_id.name }} </a>. <br>
               You can reach them at: <br>
-              {{ mail.buyer_id.email_id }}<br>
+              Email: {{ mail.sender_id.email_id }}<br>
               {% if sharephone %}
-              {{ mail.buyer_id.phone_number }}
+              Phone Number : {{ mail.sender_id.phone_number }}
               {% endif %}
               {% endif %}
             </form>
