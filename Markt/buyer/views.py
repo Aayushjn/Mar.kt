@@ -23,6 +23,7 @@ def display_buyer_cat(request, category_id):
     context = {
         'page_name': "Buyer Dashboard",
         'category': "Generic Category",
+        'cat_id':9,
         # 'base_bid': 100,
         # 'high': 300,
         # 'id':0,
@@ -55,8 +56,8 @@ def display_buyer_item(request, item_id):
 
     context = {
         'page_name': "Item Display",
-        'product':product
-
+        'product':product,
+        'cat_id':9,
     }
 
     if product.vendor_id!=request.session['userid']:
@@ -64,7 +65,7 @@ def display_buyer_item(request, item_id):
 
     if request.method == 'POST':
         context['bid_value'] = request.POST['bid_value']
-    
+        user=User.objects.get(id=request.session['userid'])
         bid = Bid()
         bid.product_id = product
         bid.buyer_id = User.objects.get(id=request.session['userid'])
@@ -75,9 +76,9 @@ def display_buyer_item(request, item_id):
         product.save()
 
         reply=Mail()
-        reply.buyer_id=request.session['userid']
+        reply.buyer_id=user
         reply.vendor_id=product.vendor_id
-        reply.bid_id=bid.id
+        reply.bid_id=bid
         reply.message_type=1
         reply.save()
         context['placed']=True

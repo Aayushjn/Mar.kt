@@ -137,6 +137,7 @@
               </div>
               {% endif %}
             <form method="POST">
+              {% csrf_token %}
               {% if newbid %}
               <p> Hello {{ mail.vendor_id.name }}<br>I was interested in bidding on your item {{ mail.title }} and am currently willing to pay Rs.{{ mail.bid_id.price }}.<br>
               Please share your contact details if you are interested in my offer by clicking the button below:<br>
