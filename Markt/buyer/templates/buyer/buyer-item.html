@@ -148,15 +148,15 @@
                     <div class="col-1"></div>
                     <div class="col-8">
                       <div class="text-left">
-                        <p class="title_custom">{{item}}</p>
+                        <p class="title_custom">{{ product.name }}</p>
 
-                        <p class="category_custom">{{ category }}</p>
-                        <p class="category_custom">Sold by {{ seller }}</p>
+                        <p class="category_custom">{{ product.category }}</p>
+                        <p class="category_custom">Sold by {{ product.vendor_id.name }}</p>
                         <br>
-                        <p class="description_custom">{{description}}
+                        <p class="description_custom">{{ product.description }}
                           </p>
                         <hr>
-                        <p class="title_custom">Base Bid : {{ base_bid }} | Highest : {{ high }}</p>
+                        <p class="title_custom">Base Bid : {{ product.minimum_bid }} | Highest : {{ product.current_high_bid }}</p>
 
                       </div>
                       <div class="col-2"></div>
@@ -167,6 +167,7 @@
             </div>
 
         </div>
+        {% if notmyproduct %}
         <div class="row">
             <div class="col-sm-12">
               <div class="card card-stats">
@@ -181,7 +182,7 @@
                             <p class="description_custom">Enter your bid amount below
                           <form method="POST">
                                 {% csrf_token %}
-                            <input id="bid_value" name="bid_value" type="number" min="{{base_bid}}" placeholder= "{{ base_bid }}" >
+                            <input id="bid_value" name="bid_value" type="number" min={{ product.minimum_bid }} placeholder= {{ product.minimum_bid }} >
                             &nbsp;
                             <input type="submit" id="bid_button" name="Bid" value="Place Bid"/>
                           </form>
@@ -194,6 +195,7 @@
                 </div>
               </div>
             </div>
+            {% endif %}
 
 
           </div>

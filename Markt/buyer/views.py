@@ -50,51 +50,37 @@ def display_buyer_cat(request, category_id):
 def display_buyer_item(request, item_id):
     if 'userid' not in request.session.keys() :
         return redirect(reverse('homepage:home'))
+    
+    product=Product.objects.get(id=item_id)
+
     context = {
         'page_name': "Item Display",
-        'category': "Generic Category",
-        'cat_id': 9,
-        'item': "Generic Item",
-        'base_bid': 100,
-        'high': 300,
-        'description': "",
-        'seller': "Generic Seller",
-        # 'id':id,
+        'product':product
 
     }
 
-    p = Product.objects.get(id=item_id)
-    context['category'] = p.category
-    context['cat_id'] = p.cat_id
-    context['item'] = p.name
-    context['base_bid'] = p.minimum_bid
-    context['high'] = p.current_high_bid
-    context['description'] = p.description
-    context['seller'] = p.vendor_id.name
+    if product.vendor_id!=request.session['userid']:
+        context['notmyproduct']=True
 
     if request.method == 'POST':
         context['bid_value'] = request.POST['bid_value']
-        try:
-            if p.vendor_id == User.objects.get(id=request.session['userid']):
-                context['errormessage'] = "Sorry! You cannot bid on your product"
-        # passing the bid value to create a mail
-        except:
-            bid = Bid()
-            bid.product_id = p
-            bid.buyer_id = User.objects.get(id=request.session['userid'])
-            bid.price = float(context['bid_value'])
-            bid.save()
-            if p.current_high_bid < bid.price:
-                p.current_high_bid = bid.price
-            p.save()
+    
+        bid = Bid()
+        bid.product_id = product
+        bid.buyer_id = User.objects.get(id=request.session['userid'])
+        bid.price = float(context['bid_value'])
+        bid.save()
+        if product.current_high_bid < bid.price:
+            product.current_high_bid = bid.price
+        product.save()
 
-            reply=Mail()
-            reply.buyer_id=request.session['userid']
-            reply.vendor_id=p.vendor_id
-            reply.bid_id=p.id
-            reply.message_type=1
-            reply.save()
-            context['placed']=True
-            return render(request, 'buyer/buyer-item.html', context)
+        reply=Mail()
+        reply.buyer_id=request.session['userid']
+        reply.vendor_id=product.vendor_id
+        reply.bid_id=bid.id
+        reply.message_type=1
+        reply.save()
+        context['placed']=True
+        return render(request, 'buyer/buyer-item.html', context)
 
     return render(request, 'buyer/buyer-item.html', context)
