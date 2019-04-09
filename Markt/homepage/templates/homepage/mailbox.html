@@ -151,12 +151,14 @@
                     {{ mail.buyer_id.name }}
                   </td>
                   <td>
+                      <a href="{% url 'homepage:mail_view' mail.id %}">
                     {{ mail.bid_id.product_id.name }}
+                  </a>
                   </td>
                   <td>
-                      <a href="{% url 'homepage:mail_view' {{ mail.id }} %}">
+                      
                     {{ mail.bid_id.price }}
-                  </a>
+                  
                   </td>
                 </tr>
               {% endfor %}

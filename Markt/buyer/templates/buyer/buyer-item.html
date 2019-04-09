@@ -139,6 +139,11 @@
           <div class="col-sm-8">
               <div class="card card-stats">
                 <div class="card-body ">
+                    <div class="row">
+                      {% if placed %}
+                      <div class="text-success">Bid Successfully placed</div>
+                      {% endif %}
+                    </div>
                   <div class="row">
                     <div class="col-1"></div>
                     <div class="col-8">

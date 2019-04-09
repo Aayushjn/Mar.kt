@@ -1,8 +1,6 @@
-from django.core.mail import EmailMessage
 from django.http import HttpRequest
 from django.shortcuts import render
 
-from Markt.settings import EMAIL_HOST_USER
 from .models import Product
 from seller.models import Bid, Mail
 from homepage.models import User
@@ -89,6 +87,14 @@ def display_buyer_item(request, item_id):
             if p.current_high_bid < bid.price:
                 p.current_high_bid = bid.price
             p.save()
-            return render(request, 'buyer/sample-mail.html', context)
+
+            reply=Mail()
+            reply.buyer_id=request.session['userid']
+            reply.vendor_id=p.vendor_id
+            reply.bid_id=p.id
+            reply.message_type=1
+            reply.save()
+            context['placed']=True
+            return render(request, 'buyer/buyer-item.html', context)
 
     return render(request, 'buyer/buyer-item.html', context)

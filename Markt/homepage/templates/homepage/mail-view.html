@@ -143,6 +143,13 @@
             <button type="submit">Share my details</button></p>
               {% endif %}
               {% if contact_reply %}
+              Hello {{ mail.vendor_id.name }}
+              <br> {{ mail.buyer_id.name }} has shared their contact details with regards to your bid of Rs.{{ mail.bid_id.price }} on the item {{ mail.title }}. <br>
+              You can reach them at: <br>
+              {{ mail.buyer_id.email_id }}<br>
+              {% if sharephone %}
+              {{ mail.buyer_id.phone_number }}
+              {% endif %}
               {% endif %}
             </form>
             </div>

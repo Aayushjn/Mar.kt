@@ -140,6 +140,12 @@ def display_mail(request,mail_id):
     if request.method=="POST":
         # TODO:
         #create a new mail to send back to person who sent it
+        reply=Mail()
+        reply.buyer_id=mail.vendor_id
+        reply.vendor_id=mail.buyer_id
+        reply.bid_id=mail.bid_id
+        reply.message_type=2
+        reply.save()
         context['sending_done']=True
 
 
