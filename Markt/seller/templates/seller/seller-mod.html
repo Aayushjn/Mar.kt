@@ -92,7 +92,7 @@
               </button>
             </div>
             <div class="navbar-brand">
-            <a href="{% url 'buyer:dashboard' %}"> Seller Dashboard </a> <a href="{% url 'buyer:category' cat_id %}"> | {{ category}}</a> <a href=""> | {{ item }}</a>
+            <a href="{% url 'buyer:dashboard' %}"> Seller Dashboard </a> <a href="{% url 'buyer:category' cat_id %}"> | {{  product.category }}</a> <a href=""> | {{ product.name }}</a>
           </div>
           </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
@@ -150,26 +150,26 @@
 
                         <p class="category_custom">Item Category: 
                             <select name="category" value={{ category }}>
-                                <option value="1">Textbooks</option>
-                                <option value="2">QPs</option>
-                                <option value="3">Notes</option>
-                                <option value="4">Furniture</option>
+                                <option value="Textbooks">Textbooks</option>
+                                <option value="QPs">QPs</option>
+                                <option value="Notes">Notes</option>
+                                <option value="Furniture">Furniture</option>
                               </select>
                         </p>
 
-                        <p class="category_custom">Sold by {{ seller }}</p>
+                        <p class="category_custom">Sold by {{ product.vendor_id.name }}</p>
                         <br>
                         <p class="description_custom">Item Description:
                           </p>
-                          <textarea cols="50" rows="4" id="description" name="description">{{description}}</textarea>
+                          <textarea cols="50" rows="4" id="description" name="description">{{ product.description }}</textarea>
                         <hr>
-                        <p class="title_custom">Base Bid : <input id="base_bid" name="base_bid" type="number" value="{{ base_bid }}"></p>
-                        <input type="submit" name="modify-listing" id="mod-list" value="{{button_text}}"></input>
+                        <p class="title_custom">Base Bid : <input id="base_bid" name="base_bid" type="number" value={{ product.minimum_bid }} ></p>
+                        <input type="submit" name="modify-listing" id="mod-list" value={{button_text}} ></input>
                         {% if delete_button %}
                         <input type="submit" name="delete-listing" id="del-list" value="Delete Listing"></input>
                         {% endif %}
                        
-                        </form>
+                        
                       </div>
                       <div class="col-2"></div>
                     </div>
@@ -185,8 +185,6 @@
                 <div class="card-body ">
                   <div class="row">
                       <div class="col-12 text-left">
-                        <form method="POST" >
-                          {% csrf_token %}
                           <table class="table">
                             <thead class=" text-primary">
                               <th>

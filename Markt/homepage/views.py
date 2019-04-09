@@ -109,7 +109,7 @@ def display_mail_home(request):
         return redirect(reverse('homepage:home'))
     uid=request.session['userid']
     mails= Mail.objects.filter(buyer_id=uid)|Mail.objects.filter(vendor_id=uid)
-    mails=sorted(mails, key=operator.attrgetter('-created'))
+    mails=sorted(mails, key=operator.attrgetter('created'))
     mails=list(mails)
     context = {
         'page_name': "Mailbox",
@@ -134,7 +134,7 @@ def display_mail(request,mail_id):
     if mail.message_type==1:
         context['newbid']=True
     if mail.message_type==2:
-        context['contact_reply']==True
+        context['contact_reply']=True
         if mail.vendor_id.share_phone==True:
             context['sharephone']=True
     if request.method=="POST":
