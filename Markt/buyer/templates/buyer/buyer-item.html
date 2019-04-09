@@ -98,7 +98,7 @@
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
               <form>
                 <div class="input-group no-border">
-                  
+
                 </div>
               </form>
               <ul class="navbar-nav">
@@ -113,7 +113,7 @@
                     <a class="dropdown-item" href="{% url 'homepage:home' %}">Logout</a>
                   </div>
                 </li>
-                
+
               </ul>
             </div>
         </div>
@@ -180,6 +180,7 @@
                             &nbsp;
                             <input type="submit" id="bid_button" name="Bid" value="Place Bid"/>
                           </form>
+                          <p id='err_message' name='err_message'>{{errormessage}}</p>
                             <hr>
                             <p class="title_custom"></p>
 

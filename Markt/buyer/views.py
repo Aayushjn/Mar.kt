@@ -61,6 +61,7 @@ def display_buyer_item(request, item_id):
         'high': 300,
         'description': "",
         'seller': "Generic Seller",
+        'errormessage': "",
         # 'id':id,
 
     }
@@ -74,13 +75,29 @@ def display_buyer_item(request, item_id):
     context['description'] = p.description
     context['seller'] = p.vendor_id.name
 
+    # if request.method == 'POST':
+    #     context['bid_value'] = request.POST['bid_value']
+    #     try:
+    #         if p.vendor_id == User.objects.get(id=request.session['userid']):
+    #             context['errormessage'] = "Sorry! You cannot bid on your product"
+    #     # passing the bid value to create a mail
+    #     except:
+    #         bid = Bid()
+    #         bid.product_id = p
+    #         bid.buyer_id = User.objects.get(id=request.session['userid'])
+    #         bid.price = float(context['bid_value'])
+    #         bid.save()
+    #         if p.current_high_bid < bid.price:
+    #             p.current_high_bid = bid.price
+    #         p.save()
+    #         return render(request, 'buyer/sample-mail.html', context)
+
     if request.method == 'POST':
         context['bid_value'] = request.POST['bid_value']
-        try:
-            if p.vendor_id == User.objects.get(id=request.session['userid']):
-                context['errormessage'] = "Sorry! You cannot bid on your product"
-        # passing the bid value to create a mail
-        except:
+        # print(p.vendor_id)
+        # print(request.session['userid'])
+        if p.vendor_id != User.objects.get(id=request.session['userid']):
+            print('yes')
             bid = Bid()
             bid.product_id = p
             bid.buyer_id = User.objects.get(id=request.session['userid'])
@@ -89,6 +106,12 @@ def display_buyer_item(request, item_id):
             if p.current_high_bid < bid.price:
                 p.current_high_bid = bid.price
             p.save()
-            return render(request, 'buyer/sample-mail.html', context)
+            # return render(request, 'buyer/sample-mail.html', context)
+            return render(request, 'buyer/buyer-dashboard.html')
+        # passing the bid value to create a mail
+        else:
+            print('errormessage')
+            context['errormessage'] = "Sorry! You cannot bid on your product"
+            return render(request, 'buyer/buyer-item.html', context)
 
     return render(request, 'buyer/buyer-item.html', context)

@@ -23,7 +23,7 @@ def display_seller_dash(request):
         context['item2']=products[1]
     if products[0] is not None:
         context['item3']=products[2]
-    
+
 
     return render(request, 'seller/seller-dashboard.html', context)
 
@@ -124,13 +124,17 @@ def display_seller_mod(request,item_id):
             p.category = request.POST['category']
             p.description = request.POST['description']
             p.minimum_bid = request.POST['base_bid']
-            if p.category == 'Textbooks':
+            if p.category == '1':
+                p.category = 'Textbooks'
                 p.cat_id = 1
-            elif p.category == 'QPs':
+            elif p.category == '2':
+                p.category = 'QPs'
                 p.cat_id = 2
-            elif p.category == 'Notes':
+            elif p.category == '3':
+                p.category = 'Notes'
                 p.cat_id = 3
-            elif p.category == 'Furniture':
+            elif p.category == '4':
+                p.category = 'Furniture'
                 p.cat_id = 4
             p.save()
             return redirect(reverse('seller:dashboard'))
@@ -149,13 +153,17 @@ def display_seller_mod(request,item_id):
         product.current_high_bid = 0
         product.image_link = "https://www.google.com/search?q=question+paper+image&rlz=1C1CHBD_enIN746IN746&source" \
                              "=lnms&tbm=isch&sa=X&ved=0ahUKEwjRoZP21bThAhURwqYKHZT0C8QQ_AUIDigB&biw=1367&bih=633# "
-        if product.category == 'Textbooks':
+        if product.category == '1':
+            product.category = 'Textbooks'
             product.cat_id = 1
-        elif product.category == 'QPs':
+        elif product.category == '2':
+            product.category = 'QPs'
             product.cat_id = 2
-        elif product.category == 'Notes':
+        elif product.category == '3':
+            product.category = 'Notes'
             product.cat_id = 3
-        elif product.category == 'Furniture':
+        elif product.category == '4':
+            product.category = 'Furniture'
             product.cat_id = 4
         product.save()
         return redirect(reverse('seller:dashboard'))
